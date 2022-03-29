@@ -1,0 +1,1 @@
+#This note section is for git and Shell scripting

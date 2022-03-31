@@ -16,4 +16,6 @@ then
     else
         echo "boom"
     fi
+else
+echo "Please enter a number between 1 and 20."
 fi

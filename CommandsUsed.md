@@ -1,20 +1,19 @@
 Step 1
-I enter git clone https://github.com/220328-uta-sh-net-ext/Yvenet-Marcelus.git 
+First, I entered the git clone https://github.com/220328-uta-sh-net-ext/Yvenet-Marcelus.git command  
 Step 2
-I entered cd Yvenet-Marcelus
+Then, I entered the cd briceson-roy command
 Step 3
-I entered ls
-Step 4
-I entered touch CommandsUsed.md.
+Next, I entered the ls command  
+Step 4  
+Then, I entered the touch CommandsUsed.md. command   
 Step 5
-I entered notepad CommandsUsed.md
-(Then I added this part when I added this file to the branch)
+Next, I entered the notepad CommandsUsed.md command
 Step 6
-I entered git status command
+Then, I entered the git status command
 Step 7
-I entered git add CommandsUsed.md command
+Next, I entered the git add CommandsUsed.md command
 Step 8
-I entered git commit -m "This file contains the initial steps from the activity's instructions." command
+Then, I entered the git commit -m "updates to file for assignment instruction." command
 Step 9
-I entered git push command
+Last, I entered the git push --set upstream origin dev-branch-Yvenet-Marcelus command
 

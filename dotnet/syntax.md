@@ -50,41 +50,58 @@ Console.Write("Cool");
 
 # declaring a variables
 
-//strings
+### strings
+
+```
 string rider;
 rider = "Build";
 //variables can be reassigned
 rider="Ex-Aid";
 Console.WriteLine(rider);
+```
 
-//chars
+### chars
+```
 char userOptions;
 userOptions = 'y';
 Console.WriteLine(userOptions);
+```
 
-//integers
+### integers
+
+```
 int gameCode;
 gameCode = 555;
 Console.WriteLine(gameCode);
+```
 
-//decimals
+### decimals
+
+```
 decimal particlesPerMillion;
 particlesPerMillion= 12.3m;
 Console.WriteLine(particlesPerMillion);
+```
 
-//boolean
+### booleans
+
+```
 bool processedCustomer;
 processedCustomer= true;
 Console.WriteLine(processedCustomer);
+```
 
-//implicitly typed local variable
-//cannot implicitly convert type 'decimal' to 'string'
+## Note! implicitly typed local variable
+cannot implicitly convert type 'decimal' to 'string'
+```
 // var message = "Hello World";
 // message = 10.0m;
+```
 
-//var can only be used if a variable is initialized
+# Note!var can only be used if a variable is initialized
+```
 //var message; 
-
+```
 //String Escape Sequences
 
 // the \n will add a new line

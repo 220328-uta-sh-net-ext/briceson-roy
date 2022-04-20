@@ -7,6 +7,10 @@ namespace CSharpBasics{
              if( s1.Length != s2.Length){
                  return false;
              }
+            s1 = s1.ToLower();
+            s2 = s2.ToLower();
+            s1 = s1.Replace(" ", "");
+            s2 = s2.Replace(" ","");
 
             //spit the strings
             char[] splitString1 = s1.ToCharArray();

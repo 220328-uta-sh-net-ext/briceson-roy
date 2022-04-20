@@ -149,7 +149,9 @@ Console.WriteLine("c:\source\repos"); // Error!
 Console.WriteLine("c:\\source\\repos");
 ```
 
-//mock up of command line
+## Mock up of command line
+
+```
 Console.WriteLine("Generating invoices for customer \"ABC Corp\" ...\n");
 Console.WriteLine("Invoice: 1021\t\tComplete!");
 Console.WriteLine("Invoice: 1022\t\tComplete!");
@@ -160,57 +162,85 @@ Console.Write(@"c:\invoices");
 // Nihon no seikyū-sho o seisei suru ni wa:
 Console.Write("\n\n\u65e5\u672c\u306e\u8acb\u6c42\u66f8\u3092\u751f\u6210\u3059\u308b\u306b\u306f\uff1a\n\t");
 Console.WriteLine(@"c:\invoices\app.exe -j");
+```
 
-//Verbatim String Literal
-/_A verbatim string literal will keep all whitespace and characters
+## Verbatim String Literal
+A verbatim string literal will keep all whitespace and characters
 without the need to escape the backslash. To create
 a verbatim string, use the @ directive before the literal string._/
+
+``
 Console.WriteLine(@" c:\source\repos
 (Code goes here)");
+``
 
-//unicode escape characters
-// \u and a four character code creates a character in unicode
+## Unicode escape characters
+\u and a four character code creates a character in unicode
+
+```
 Console.WriteLine("\u3053\u3093\u306B\u3061\u306F World!"); //Koni
+```
 
-//String Concatenation
-// Concatenation is programmer speak for combining two or more values
+
+## String Concatenation
+Concatenation is programmer speak for combining two or more values
+
+```
 string firstName = "Bob";
 string message = "Hello " + firstName;
 Console.WriteLine(message);
+```
 
-//concatentate multiple variable calls
-// string greeting= "Hello";
-// string name= "Bob";
+You can also concatentate multiple variable calls
 
-// string messageTwo = greeting + ", " + name + ".";
-// Console.WriteLine(messageTwo);
+```
+string greeting= "Hello";
+string name= "Bob";
 
-//avoiding use of intermidiate variables
-// string greeting= "Hello";
-// string name= "Bob";
+string messageTwo = greeting + ", " + name + ".";
+Console.WriteLine(messageTwo);
+```
 
-// Console.WriteLine(greeting + ", " + name + "!");
+Avoiding use of intermidiate variables
 
-//string interpolation
-//refers to combining multipe values into a message through the use of {}
+```
+string greeting= "Hello";
+string name= "Bob";
+
+Console.WriteLine(greeting + ", " + name + "!");
+```
+
+
+## String interpolation
+refers to combining multipe values into a message through the use of {}
+
+```
 string rider = "Kamen Rider Quiz!";
 string henshin = $"Fashion! Passion! Question! {rider}!";
 
 Console.Write(henshin);
+```
 
-//can be done with multiple values
-// string boss= "Huge Battleship";
-// string bossName= "Great Thing";
-// string warning = $"Warning! {boss}! {bossName}! Is Approaching!";
-// Console.WriteLine(warning);
+can be done with multiple values
 
-//can be done without intermediate values
+```
+string boss= "Huge Battleship";
+string bossName= "Great Thing";
+string warning = $"Warning! {boss}! {bossName}! Is Approaching!";
+Console.WriteLine(warning);
+```
+
+Can be done without intermediate values
+```
 string boss= "Huge Battleship";
 string bossName= "Great Thing";
 
 Console.WriteLine($"Warning! {boss}! {bossName}! Is Approaching!");
+```
 
-//combining with verbatim strings
+Combining with verbatim strings
+
+```
 string projectName = "Nebula";
 Console.WriteLine($@"C:\Output\{projectName}\Data");
 
@@ -218,25 +248,33 @@ Console.WriteLine($@"C:\Output\{projectName}\Data");
 
 string projectNameTwo = "Wingman";
 Console.WriteLine($"C:\\Output\\{projectName}\\Data");
+```
 
-//basic operations with numbers
+# Basic operations with numbers
 
-//simple addition
+## simple addition
+
+```
 int x = 12;
 int y = 7;
 Console.Write(x + y);
+```
 
-//impicit type conversion
-//program understands you're trying to convert an int to a string
-
-/_ string name = "Mark";
+## impicit type conversion
+program understands you're trying to convert an int to a string
+```
+string name = "Mark";
 int productsSold= 42;
-Console.WriteLine(name + " sold" + productsSold + " boxes of chocolate.");_/
+Console.WriteLine(name + " sold" + productsSold + " boxes of chocolate.");
+```
 
-//attempting to add numbers in a concatenated string
-/_string name = "Mark";
+## attempting to add numbers in a concatenated string
+
+```
+string name = "Mark";
 int productsSold= 42;
-Console.WriteLine(name + " sold " + productsSold + 7 + " boxes of chocolate.");_/
+Console.WriteLine(name + " sold " + productsSold + 7 + " boxes of chocolate.");
+```
 
 // will misunderstand the adding of additional number as part of concatenation
 // use parentheses to better make it understand
@@ -403,12 +441,11 @@ Console.WriteLine($"First roll: {roll1}");
 Console.WriteLine($"Second roll: {roll2}");
 Console.WriteLine($"Third roll: {roll3}");
 
-# Logi
+# Logic
 
 ## If statements
 
 if statements are used to execute a code under certain conditions
-
 ```
 Random card = new Random();
 
@@ -456,6 +493,7 @@ else {
     Console.WriteLine("You Lose...");
 }
 ```
+
 You can also use nested if...elses to count for conditions that are more specific
 
 ```
@@ -514,8 +552,63 @@ if (discountPercentage > 0)
 }
 ```
 
+# Switch Statement
 
-# Arrays 
+```
+int employeeLevel = 201;
+string employeeName = "John Smith";
+
+string title = "";
+
+switch (employeeLevel)
+{
+    case 100:
+    case 200:
+        title = "Senior Associate";
+        break;
+    case 300:
+        title = "Manager";
+        break;
+    case 400:
+        title = "Senior Manager";
+        break;
+    default:
+        title = "Associate";
+        break;
+}
+
+Console.WriteLine($"{employeeName}, {title}");
+```
+
+# Do-While Loop
+
+A do while loop will execute a loop once before checking the condition
+
+```
+int hero = 10;
+int monster = 10;
+
+Random dice = new Random();
+
+do
+{
+    int roll = dice.Next(1, 11);
+    monster -= roll;
+    Console.WriteLine($"Monster was damaged and lost {roll} health and now has {monster} health.");
+
+    if (monster <= 0) continue;
+
+    roll = dice.Next(1, 11);
+    hero -= roll;
+    Console.WriteLine($"Hero was damaged and lost {roll} health and now has {hero} health.");
+
+} while (hero > 0 && monster > 0);
+
+Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
+
+```
+
+# Arrays
 
 An array is a sequence of individual data elements accessible through a single variable name. You use a zero-based numeric index to access each element of an array. As you'll see, arrays allow us to collect together similar data that shares a common purpose or characteristics in a single data structure for easier processing.
 
@@ -585,7 +678,6 @@ Console.WriteLine($"Reassign First: {fraudulentOrderIDs[0]}");
 
 ## Initializing an array
 
-
 ```
 /*
 string[] fraudulentOrderIDs = new string[3];
@@ -648,3 +740,224 @@ foreach (int items in inventory)
 }
 Console.WriteLine($"We have {sum} items in inventory.");
 ```
+
+# Integral DataTypes
+
+The Min-Max value is used to show the values of each signed integral type
+
+```
+Console.WriteLine("Signed integral types:");
+
+Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
+Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
+Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
+Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
+
+
+Console.WriteLine("");
+Console.WriteLine("Unsigned integral types:");
+
+Console.WriteLine($"byte   : {byte.MinValue} to {byte.MaxValue}");
+Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
+Console.WriteLine($"uint   : {uint.MinValue} to {uint.MaxValue}");
+Console.WriteLine($"ulong  : {ulong.MinValue} to {ulong.MaxValue}");
+
+//output
+
+Signed integral types:
+sbyte  : -128 to 127
+short  : -32768 to 32767
+int    : -2147483648 to 2147483647
+long   : -9223372036854775808 to 9223372036854775807
+
+
+Unsigned integral types:
+byte   : 0 to 255
+ushort : 0 to 65535
+uint   : 0 to 4294967295
+ulong  : 0 to 18446744073709551615
+```
+
+## Floating-point types
+
+```
+Console.WriteLine("");
+Console.WriteLine("Floating point types:");
+Console.WriteLine($"float  : {float.MinValue} to {float.MaxValue} (with ~6-9 digits of precision)");
+Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17 digits of precision)");
+Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue} (with 28-29 digits of precision)");
+
+//Output
+Floating point types:
+float  : -3.402823E+38 to 3.402823E+38 (with ~6-9 digits of precision)
+double : -1.79769313486232E+308 to 1.79769313486232E+308 (with ~15-17 digits of precision)
+decimal: -79228162514264337593543950335 to 79228162514264337593543950335 (with 28-29 digits of precision)
+```
+
+## Sort() and Reverse()
+
+Sorted
+
+```
+string[] pallets = { "B14", "A11", "B12", "A13" };
+
+Console.WriteLine("Sorted...");
+Array.Sort(pallets);
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+//output
+Sorted...
+-- A11
+-- A13
+-- B12
+-- B14
+
+```
+## Split() and Join()
+
+Using the join function.
+
+```
+string value = "abc123";
+char[] valueArray = value.ToCharArray();
+Array.Reverse(valueArray);
+// string result = new string(valueArray);
+string result = String.Join(",", valueArray);
+Console.WriteLine(result);
+
+//output
+3,2,1,c,b,a
+```
+
+Using the split key to turn the value into an array
+
+```
+
+string value = "abc123";
+char[] valueArray = value.ToCharArray();
+Array.Reverse(valueArray);
+// string result = new string(valueArray);
+string result = String.Join(",", valueArray);
+Console.WriteLine(result);
+
+string[] items = result.Split(',');
+foreach (string item in items)
+{
+    Console.WriteLine(item);
+}
+
+// output
+3,2,1,c,b,a
+3
+2
+1
+c
+b
+a
+```
+
+# String Formats
+Composite formatting uses numbered placeholders within a string. At run time, everything inside the braces will be resolved to a value that is also passed in based on their position.
+
+```
+string first = "Hello";
+string second = "World";
+string result = string.Format("{0} {1}!", first, second);
+Console.WriteLine(result);
+
+//output 
+
+Hello World!
+```
+
+
+```
+string first = "Hello";
+string second = "World";
+Console.WriteLine("{1} {0}!", first, second);
+Console.WriteLine("{0} {0} {0}!", first, second);
+
+//output
+
+World Hello!
+Hello Hello Hello!
+```
+
+
+Formatting strings with currency
+Currency  will automatically set the currecncy based on the nationatilty
+```
+decimal price = 123.45m;
+int discount = 50;
+Console.WriteLine($"Price: {price:C} (Save {discount:C})");
+
+//output
+
+Price: ¤123.45 (Save ¤50.00)
+```
+
+## Formatting numbers
+
+To reliably format decimals and add readable decimals use the N tag
+
+```
+decimal measurement = 123456.78912m;
+Console.WriteLine($"Measurement: {measurement:N} units");
+
+//output
+Measurement: 123,456.79 units
+```
+
+
+If you want to display more precision, you can do that by adding a number after the specifier. The following code will display four digits after the decimal point using the N4 specifier.
+
+```
+decimal measurement = 123456.78912m;
+Console.WriteLine($"Measurement: {measurement:N4} units");
+
+Measurement: 123,456.7891 units
+```
+
+## Formatting Percentage
+
+Use the P format specifier to format percentages. Add a number afterwards to control the number of values displayed after the decimal point.
+
+```
+decimal tax = .36785m;
+Console.WriteLine($"Tax rate: {tax:P2}");
+
+//output
+Tax rate: 36.79 %
+```
+
+## Formatting with padding and alignment
+
+The PadLeft() method will add blank spaces to the left-hand side of the string so that the total number of characters equals the argument you send it. In this case, we want to total length of the string to be 12 characters.
+
+```
+string input = "Pad this";
+Console.WriteLine(input.PadLeft(12));
+
+//output
+
+    Pad this
+```
+
+In C#, an overloaded method is another version of a method with different or additional arguments that modify the functionality of the method slightly, as is the case with our overloaded version of the PadLeft() method. We'll learn how to create methods and overloaded methods in other modules.
+
+You can also call a second overloaded version of the method and pass in whatever character you want to use instead of a space. In this case, we'll fill the extra space with the dash character.
+
+```
+Console.WriteLine(input.PadLeft(12, '-'));
+Console.WriteLine(input.PadRight(12, '-'));
+
+//output
+----Pad this
+Pad this----
+```
+
+# Modifying string contents using data-types in c#
+

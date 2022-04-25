@@ -8,10 +8,16 @@ namespace RestaurantBL
 {
     internal class RatingCalc
     {
-        //Get all the ratings for a restaurant
+        public int AverageRating()
+        {
+           // List<Stars> reviewStars = 
+            int sum = 0;
+            //Get all the ratings for a restaurant
 
-        //Add them up and divide
+            //Add them up and divide
 
-        //send result to the repository
+            //send result to the repository
+            return sum;
+        }
     }
 }

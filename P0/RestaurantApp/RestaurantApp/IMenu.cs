@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantUI
 {
-    public interface IUserFunctions
+    public interface IMenu
     {
         /// <summary>
         /// 
@@ -18,5 +18,11 @@ namespace RestaurantUI
         /// </summary>
         /// <returns></returns>
         string UserChoice();
+    }
+    interface IMoreMenu
+    {
+        void Exit();
+
+        void Continue();
     }
 }

@@ -1,17 +1,18 @@
 ﻿namespace RestaurantUI
 {
-    public class UserFunctions : IUserFunctions
+    public class MainMenu : IMenu
     {
         public void Display()
         {
             Console.WriteLine("Welcome to the Restaurant Review App");
-            Console.WriteLine("If you are a new User press <r> to register");
-            Console.WriteLine("If you are a returning User press <l> to log in");
+            Console.WriteLine("If you are a new User press <1> to look all restaurant");
+            Console.WriteLine("If you are a returning User press <2> to search a restaurant");
             Console.WriteLine("To exit the App please press <x>");
         }
 
         public string UserChoice()
         {
+            Display();
             string userInput = Console.ReadLine();
 
             switch (userInput)

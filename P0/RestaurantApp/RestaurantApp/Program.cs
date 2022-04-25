@@ -2,11 +2,9 @@
 using RestaurantUI;
 
 bool active = true;
-IUserFunctions menu = new UserFunctions();
-
+IMenu menu = new MainMenu();
 while (active)
 {
-    menu.UserChoice();
     string response = menu.UserChoice();
 
     switch (response)

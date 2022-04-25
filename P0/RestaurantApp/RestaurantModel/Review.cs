@@ -1,36 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CustomExceptions;
 
+namespace Models;
 
-namespace RestaurantModel
+public class Review
 {
-    public class Review
+
+    //empty constructor
+    public Review() { }
+
+    //Example of constructor overloading
+    public Review(int rating)
     {
-        //StarNumber
-        private int _starCount;
-        public int StarCount
+        this.Rating = rating;
+    }
+
+    public Review(int rating, string note)
+    {
+        this.Rating = rating;
+        this.Note = note;
+    }
+
+    public int Id { get; set; }
+
+    public int RestaurantId { get; set; }
+
+    private int _rating;
+    public int Rating
+    {
+        get => _rating;
+        //For the setter, we are checking that the rating is between 1 and 5
+        set
         {
-            get { return _starCount; }
-            set
+            if (value <= 0 || value > 5)
             {
-                if (value >= 0 && value >= 5)
-                    _starCount = value;
-                else
-                    throw new Exception("The star count cannot be less than 0 or greater than 5");
+                throw new InputInvalidException("Rating must be between 1 and 5");
             }
+            this._rating = value;
         }
-        //Details
-        public string Details { get; set; }
+    }
+    public string Note { get; set; }
 
+    //override Review's ToString Method for me here
+    //That outputs $"Rating: {review.Rating} \t Note: {review.Note}"
 
-        public Review()
-        {
-            StarCount = 0;
-            Details = "";
-        }
-
+    public override string ToString()
+    {
+        return $"Rating: {this.Rating} \t Note: {this.Note}";
     }
 }

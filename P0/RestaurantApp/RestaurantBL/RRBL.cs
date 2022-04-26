@@ -7,10 +7,16 @@ public class RRBL : IBL
 {
     private readonly IRepository _dl;
 
-    public RRBL(IRepository repo)
+    public RRBL(IRepository repository)
     {
-        _dl = repo;
+        _dl = repository;
     }
+
+    public RRBL()
+    {
+    }
+
+
 
     /// <summary>
     /// Gets all restaurants
@@ -51,5 +57,8 @@ public class RRBL : IBL
 
     }
 
-
+    public List<Review> GetAllReviews()
+    {
+        throw new NotImplementedException();
+    }
 }

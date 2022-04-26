@@ -14,8 +14,10 @@ namespace RestaurantUI
 
         public void Display()
         {
-            Console.WriteLine("Please select an option to filter the pokemon database");
+            Console.WriteLine("Please select an option to filter the restaurant database");
             Console.WriteLine("Press <1> By Name");
+            Console.WriteLine("Press <2> By Average Rating");
+            Console.WriteLine("Press <3> By Zip Code");
             Console.WriteLine("Press <0> Go Back");
         }
         public string UserChoice()
@@ -46,6 +48,45 @@ namespace RestaurantUI
                     Console.WriteLine("Press <enter> to continue");
                     Console.ReadLine();
                     return "MainMenu";
+                    break ;
+                case "2":
+                    Console.WriteLine("Please enter a name for the restaurant: ");
+                    string rating = Console.ReadLine();
+                    var resultsTwo = repository.SearchRestaurants(rating);
+                    if (resultsTwo.Count() > 0)
+                    {
+                        foreach (var result in resultsTwo)
+                        {
+                            Console.WriteLine("=================");
+                            Console.WriteLine(result.ToString());
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Restaurant with search string {rating} not found");
+                    }
+                    Console.WriteLine("Press <enter> to continue");
+                    Console.ReadLine();
+                    return "MainMenu";
+                case "3":
+                    Console.WriteLine("Please enter a name for the restaurant: ");
+                    string zipCode = Console.ReadLine();
+                    var resultsThree = repository.SearchRestaurants(zipCode);
+                    if (resultsThree.Count() > 0)
+                    {
+                        foreach (var result in resultsThree)
+                        {
+                            Console.WriteLine("=================");
+                            Console.WriteLine(result.ToString());
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Restaurant with search string {zipCode} not found");
+                    }
+                    Console.WriteLine("Press <enter> to continue");
+                    Console.ReadLine();
+                    return "MainMenu";
                 default:
                     Console.WriteLine("Please enter a valid response");
                     Console.WriteLine("Please press <enter> to continue");
@@ -53,9 +94,5 @@ namespace RestaurantUI
                     return "SearchRestaurant";
             }
         }
-      
-
-     
-
     }
 }

@@ -35,14 +35,16 @@ namespace RestaurantUI
                     return "Main Menu";
                     break;
                 case "1":
-
+                    return "AddReviewMenu";
+                    break;
                 case "2":
-                    
+                    return "All Reviews";
                 default:
                     Console.WriteLine("Please enter a valid response");
                     Console.WriteLine("Please press <enter> to continue");
                     Console.ReadLine();
                     return "SearchRestaurant";
             }
+        }
     }
 }

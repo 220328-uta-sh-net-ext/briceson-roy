@@ -102,4 +102,4 @@ public class Restaurant
         row["City"] = this.City;
         row["State"] = this.State;
     }
-}
+} 

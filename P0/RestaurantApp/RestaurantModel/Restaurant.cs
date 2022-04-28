@@ -35,6 +35,8 @@ public class Restaurant
         this.Name = row["Name"].ToString() ?? "";
         this.City = row["City"].ToString() ?? "";
         this.State = row["State"].ToString() ?? "";
+        this.ZipCode = row["ZipCode"].ToString() ?? "";
+        this.AvgRating = (double)row["AvgRating"];
     }
 
     public int Id { get; set; }
@@ -85,11 +87,13 @@ public class Restaurant
 
     public string City { get; set; }
     public string State { get; set; }
+    public string ZipCode { get; set; }
+    public double AvgRating { get; set; }
     public List<Review> Reviews { get; set; }
 
     public override string ToString()
     {
-        return $"Id: {this.Id} \nName: {this.Name} \nCity: {this.City} \nState: {this.State}";
+        return $"Id: {this.Id} \nName: {this.Name} \nCity: {this.City} \nState: {this.State} \nZipCode: {this.ZipCode} \nAvgRating: {this.AvgRating}";
     }
 
     /// <summary>

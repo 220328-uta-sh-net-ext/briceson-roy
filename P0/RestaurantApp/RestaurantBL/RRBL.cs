@@ -18,14 +18,6 @@ public class RRBL : IBL
 
 
 
-    /// <summary>
-    /// Gets all restaurants
-    /// </summary>
-    /// <returns>list of all restaurants</returns>
-    public List<Restaurant> GetAllRestaurants()
-    {
-        throw new NotImplementedException();
-    }
 
     /// <summary>
     /// Adds a new restaurant to the list
@@ -35,7 +27,8 @@ public class RRBL : IBL
     /// <exception cref="DuplicateRecordException">When there is a restaurant that already exists</exception>
     public void AddRestaurant(Restaurant restaurantToAdd)
     {
-        throw new NotImplementedException();
+       IRepository repository = new SqlRepository();
+        
     }
 
     /// <summary>
@@ -43,9 +36,20 @@ public class RRBL : IBL
     /// </summary>
     /// <param name="restaurantId">index of the restaurant to leave a review for</param>
     /// <param name="reviewToAdd">a review object to be added to the restaurant</param>
-    public void AddReview(int restaurantId, Review reviewToAdd)
+    public void AddReview(Review reviewToAdd)
     {
-        throw new NotImplementedException();
+        IRepository repository = new SqlRepository();
+    }
+
+
+    /// <summary>
+    /// Gets all restaurants
+    /// </summary>
+    /// <returns>list of all restaurants</returns>
+    public List<Restaurant> GetAllRestaurants()
+    {   
+        var restaurants = _dl.GetAllRestaurants();
+        return restaurants;
     }
 
     public List<Restaurant> SearchRestaurants(string searchTerm)
@@ -59,6 +63,9 @@ public class RRBL : IBL
 
     public List<Review> GetAllReviews()
     {
-        throw new NotImplementedException();
+        var reviews = _dl.GetAllReviews();
+        return reviews;
     }
+
+  
 }

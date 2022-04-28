@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RestaurantDL;
+using Models;
 
 namespace RestaurantBL
 {
-    internal class RatingCalc
+    public class RatingCalc
     {
-        public int AverageRating()
+        public static double AverageRating()
         {
-           // List<Stars> reviewStars = 
-            int sum = 0;
+            Repository reviews = new Repository();
+            var review = reviews.GetAllReviews();
+
+
+            double sum = 0;
             //Get all the ratings for a restaurant
+            for(int i = 0; i < review.Count; i++)
+            {
+                sum += review[i].Rating;
+            }
 
-            //Add them up and divide
+            //Add them up and divid
 
+           return Math.Round(sum / review.Count, 2);
             //send result to the repository
-            return sum;
+           
         }
     }
 }

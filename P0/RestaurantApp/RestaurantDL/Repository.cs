@@ -1,4 +1,4 @@
-﻿using RestaurantModel;
+﻿using Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,9 +6,9 @@ using System.Text.Json;
 
 namespace RestaurantDL
 {
-    public class Repository: IRepository
+    public class Repository : IRepository
     {
-        private string filePath = "../RestaurantDL/Database/";
+        private string filePath = "../../../../../../RestaurantDL/Database/";
         private string jsonString;
 
         public Restaurant AddRestaurant(Restaurant restaurant)
@@ -23,7 +23,7 @@ namespace RestaurantDL
             var reviewString = JsonSerializer.Serialize<List<Review>>(reviews, new JsonSerializerOptions { WriteIndented = true });
             try
             {
-                File.WriteAllText(filePath + "Review.json", reviewString);
+                File.WriteAllText(filePath + "Reviews.json", reviewString);
             }
             catch (DirectoryNotFoundException ex)
             {
@@ -40,7 +40,17 @@ namespace RestaurantDL
             return review;
         }
 
-        public User AddUser(User user)
+        public void AddReview(int restaurantId, Review reviewToAdd)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUser(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*public User AddUser(User user)
         { 
             var users = GetAllUsers();
             users.Add(user);
@@ -62,7 +72,7 @@ namespace RestaurantDL
                 Console.WriteLine(ex.Message);
             }
             return user;
-        }
+        }*/
 
         public List<Restaurant> GetAllRestaurants()
         {
@@ -92,7 +102,7 @@ namespace RestaurantDL
         {
             try
             {
-                jsonString = File.ReadAllText(filePath + "Users.json");
+                jsonString = File.ReadAllText(filePath + "Restaurant.json");
             }
             catch (DirectoryNotFoundException ex)
             {
@@ -112,7 +122,22 @@ namespace RestaurantDL
                 return null;
         }
 
-        public List<User> GetAllUsers()
+        public bool IsDuplicate(Restaurant restaurant)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Restaurant> SearchRestaurants(string searchTerm)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepository.AddRestaurant(Restaurant restaurantToAdd)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*public List<User> GetAllUsers()
         {
             try
             {
@@ -134,6 +159,6 @@ namespace RestaurantDL
                 return JsonSerializer.Deserialize<List<User>>(jsonString);
             else
                 return null;
-        }
+        }*/
     }
 }

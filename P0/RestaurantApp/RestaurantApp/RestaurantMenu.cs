@@ -39,6 +39,7 @@ namespace RestaurantUI
                         {
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());
+                            return "ReviewMenu";
                         }
                     }
                     else
@@ -59,6 +60,7 @@ namespace RestaurantUI
                         {
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());
+                            return "ReviewMenu";
                         }
                     }
                     else
@@ -78,6 +80,7 @@ namespace RestaurantUI
                         {
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());
+                            return "ReviewMenu";
                         }
                     }
                     else

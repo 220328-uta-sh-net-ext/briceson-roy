@@ -1,46 +1,23 @@
-﻿using RestaurantModel;
-using System.Collections.Generic;
+﻿using Models;
+using RestaurantModel;
 
 namespace RestaurantDL
 {
     public interface IRepository
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        User AddUser(User user);
-
-        List<User> GetAllUsers();
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="restaurant"></param>
-        /// <returns></returns>
-        Restaurant AddRestaurant(Restaurant restaurant);
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         List<Restaurant> GetAllRestaurants();
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="review"></param>
-        /// <returns></returns>
-        Review AddReview(Review review);
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         List<Review> GetAllReviews();
+
+        void AddRestaurant(Restaurant restaurantToAdd);
+
+        void AddReview(int restaurantId, Review reviewToAdd);
+
+        void AddUser(User userToAdd);
+
+        List<Restaurant> SearchRestaurants(string searchTerm);
+
+        bool IsDuplicate(Restaurant restaurant);
+        void AddReview(Review newReview);
     }
 }

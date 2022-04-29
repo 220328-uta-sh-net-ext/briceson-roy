@@ -4,28 +4,43 @@ using RestaurantBL;
 using RestaurantDL;
 using Models;
 
-//bool active = true;
-//IMenu menu = new MainMenu();
-//while (active)
-//{
-    //string response = menu.UserChoice();
+bool active = true;
+IMenu menu = new MainMenu();
+while (active)
+{
+    string response = menu.UserChoice();
     
-   /* switch (response)
+    switch (response)
     {
         case "Login":
-            //Login Method
+            Console.WriteLine("Returning to start");
+            menu = new MainMenu();
             break;
         case "Register":
-            //Register Method               
+            menu = new RegisterUser();               
+            break;
+        case "MainMenu":
+            menu = new MainMenu();
+            break;
+        case "RestaurantMenu":
+            menu = new RestaurantMenu();
+            break; 
+        case "AddRestaurant":
+            menu = new AddRestaurantMenu();
+            break;
+        case "ReviewMenu":
+            menu = new ReviewMenu();
             break;
         case "exit":
             active = false;
             break;
-    }*/
+        default:
+            Console.WriteLine("This menu does not exist. Try Again...");
+            continue;
+    }
+}
 
-//}
 
-
-Restaurant name = new Restaurant();
-name.AvgRating = RatingCalc.AverageRating();
-Console.WriteLine(name.AvgRating.ToString());
+//Restaurant name = new Restaurant();
+//name.AvgRating = RatingCalc.AverageRating();
+//Console.WriteLine(name.AvgRating.ToString());

@@ -13,7 +13,7 @@ namespace RestaurantUI
     {
         private static Review newReview = new Review();
 
-        private  IBL _repository = new RRBL();
+        private IRepository _repository = new SqlRepository();
 
         public void Display()
         {
@@ -30,7 +30,7 @@ namespace RestaurantUI
                 case "0":
                     return "MainMenu";
                 case "1":
-                      Console.Write("Please Add the star count to the review: ");
+                    Console.Write("Please Add the star count to the review: ");
                     newReview.Rating = Convert.ToInt32(Console.ReadLine());
                     return "AddReview";
                 case "2":

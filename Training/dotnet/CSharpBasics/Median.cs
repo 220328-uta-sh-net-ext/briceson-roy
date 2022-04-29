@@ -1,8 +1,11 @@
-// using System;
-// namespace CSharpBasics{
-//     public class Median{
-//         public static void FindMedian(int[] arr){
-//             int sortedArray = arr.Sort();
-//         }
-//     }
-// }
+using System;
+namespace CSharpBasics{
+    puvliv static void Test(string[] args)
+{
+    int i;
+    for (i = 0; i < 5; i++)
+    {
+    }
+    Console.WriteLine(i);
+}
+}

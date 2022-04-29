@@ -3,31 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RestaurantDL;
+using RestaurantModel;
 
 namespace RestaurantUI
 {
     internal class LoginMenu : IMenu
     {
+ 
         public void Display()
         {
-            Console.WriteLine("Welcome to the Restaurant Review App");
-            Console.WriteLine("If you are a new User press <1> to look all restaurant");
-            Console.WriteLine("If you are a returning User press <2> to search a restaurant");
-            Console.WriteLine("To exit the App please press <x>");
+            Console.WriteLine("If you are a new User press <1> to login");
+            Console.WriteLine("To exit the App please press <0>");
         }
 
         public string UserChoice()
         {
-            Display();
+            Display();             
             string userInput = Console.ReadLine();
-
             switch (userInput)
             {
-                case "x":
+                case "0":
                     return "Exit";
-                case "r":
-                    return "Register";
-                case "l":
+                case "1":
+                    Console.WriteLine("Enter your username: ");
+                    var Username = Console.ReadLine();
+                    Console.WriteLine("Enter Password: ");
+                    var Password = Console.ReadLine();
+                    if (Username == && Password ==)
+                    {
+
+                    }
+                    else if(Username == && Password == )
+                    {
+
+                    }
                     return "Login";
                 default:
                     Console.WriteLine("Response not acceptable");

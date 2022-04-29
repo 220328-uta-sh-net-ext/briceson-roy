@@ -20,22 +20,17 @@
             switch (userInput)
             {
                 case "1":
-                    return "Search Restaurant";
+                    return "RestaurantMenu";
                     break;
                 case "2":
-                    return "leave Review";
-                    break ;
-                case "3":
                     return "Exit";
                 default :
                     Console.WriteLine("Response not acceptable");
                     Console.WriteLine("To continue press <enter> to continue");
                     Console.ReadLine();
-                    return "Main Menu";
+                    return "MainMenu";
 
             }
         }
-
-
     }
 }

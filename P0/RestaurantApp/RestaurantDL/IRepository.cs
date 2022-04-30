@@ -9,11 +9,15 @@ namespace RestaurantDL
 
         List<Review> GetAllReviews();
 
-        void AddRestaurant(Restaurant restaurantToAdd);
+        List<Review> GetSomeReviews(int restaurantId);
+
+        Restaurant AddRestaurant(Restaurant restaurantToAdd);
 
         void AddReview(int restaurantId, Review reviewToAdd);
 
-        void AddUser(User userToAdd);
+        User AddUser(User userToAdd);
+
+        void UpdateAvgRating(int restaurantId, decimal rating);
 
         List<Restaurant> SearchRestaurants(string searchTerm);
 

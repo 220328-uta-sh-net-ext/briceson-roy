@@ -12,7 +12,7 @@ namespace RestaurantBL
     {
         public static double AverageRating()
         {
-            Repository reviews = new Repository();
+            SqlRepository reviews = new SqlRepository();
             var review = reviews.GetAllReviews();
 
 

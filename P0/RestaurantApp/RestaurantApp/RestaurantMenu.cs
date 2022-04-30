@@ -10,7 +10,7 @@ namespace RestaurantUI
 {
     internal class RestaurantMenu : IMenu
     {
-        static Repository repository = new Repository();
+        static IRepository repository = new SqlRepository();
 
         public void Display()
         {

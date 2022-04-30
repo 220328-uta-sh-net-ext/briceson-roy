@@ -5,7 +5,7 @@ using RestaurantDL;
 using Models;
 
 bool active = true;
-IMenu menu = new MainMenu();
+IMenu menu = new LoginMenu();
 while (active)
 {
     string response = menu.UserChoice();
@@ -14,7 +14,7 @@ while (active)
     {
         case "Login":
             Console.WriteLine("Returning to start");
-            menu = new MainMenu();
+            menu = new LoginMenu();
             break;
         case "Register":
             menu = new RegisterUser();               

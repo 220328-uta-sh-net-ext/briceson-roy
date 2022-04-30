@@ -39,7 +39,7 @@ namespace RestaurantUI
                     return "AddReview";
                 case "3":
                   ;try
-                    { 
+                    {
                         _repository.AddReview(newReview);
                     }
                     catch (Exception ex)

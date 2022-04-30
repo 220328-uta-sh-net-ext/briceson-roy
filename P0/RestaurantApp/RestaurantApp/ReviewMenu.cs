@@ -11,6 +11,11 @@ namespace RestaurantUI
     internal class ReviewMenu : IMenu
     {
         private readonly IBL _b1;
+
+        public ReviewMenu()
+        {
+        }
+
         private ReviewMenu(IBL bL)
         {
             _b1 = bL;

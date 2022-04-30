@@ -19,6 +19,26 @@ namespace RestaurantUI
             Console.WriteLine("Press <0> to return to the login menu");
         }
 
+        //public bool ValidateUser()
+        //{
+        //    Console.WriteLine("Enter your username: ");
+        //    var Username = Console.ReadLine();
+        //    Console.WriteLine("Enter Password: ");
+        //    var Password = Console.ReadLine();
+        //    if (Username == null || Password == null)
+        //    {
+        //        return false;
+        //    }
+        //    else if (Username != Account.Username || Password != Account.Password)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
+
         public string UserChoice()
         {
            string userInput = Console.ReadLine();
@@ -29,14 +49,16 @@ namespace RestaurantUI
                 newAccount.Username = Console.ReadLine();
                     Console.WriteLine("Enter Password: ");
                     newAccount.Password = Console.ReadLine();
+                   
+                    
                     _repository.AddUser(newAccount);
-                    return "Log successful";
+                    return "LoginMenu";
                 case "0" :
                     Console.WriteLine("Returning");
-                    return "Login Menu";
+                    return "LoginMenu";
                 default :
                     Console.WriteLine("Please input a valid response");
-                    return "Try again with valid information";
+                    return "Register";
             }
         }
     }

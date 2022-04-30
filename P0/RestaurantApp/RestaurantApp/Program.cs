@@ -12,7 +12,7 @@ while (active)
     
     switch (response)
     {
-        case "Login":
+        case "LoginMenu":
             Console.WriteLine("Returning to start");
             menu = new LoginMenu();
             break;

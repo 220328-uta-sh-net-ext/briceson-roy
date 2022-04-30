@@ -140,6 +140,13 @@ namespace RestaurantDL
         public void UpdateAvgRating(int restaurantID, decimal rating)
         {
             String commandString = "UPDATE Restaurants SET AvgRating=@avg WHERE id=@restaurantID";
+
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new(commandString, connection);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            command.Parameters.AddWithValue("@rating", rating);
         }
 
         public List<Restaurant> SearchRestaurants(string searchTerm)

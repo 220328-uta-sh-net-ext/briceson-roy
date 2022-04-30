@@ -15,7 +15,9 @@ namespace RestaurantUI
 
         public void Display()
         {
-            Console.WriteLine("If you are a new User press <1> to login");
+            Console.WriteLine("Welcome to the Restaurant Review App");
+            Console.WriteLine("If you are a returning User press <1> to login");
+            Console.WriteLine("If you are a new User press <2> to register");
             Console.WriteLine("To exit the App please press <0>");
         }
 
@@ -55,7 +57,9 @@ namespace RestaurantUI
                     {
                         Console.WriteLine("Username or Password was not correct please retry");
                         return "Login";
-                    }
+                   }
+                    case "2":
+                    return "Register";
                 default:
                     Console.WriteLine("Response not acceptable");
                     Console.WriteLine("To continue press <enter> to continue");

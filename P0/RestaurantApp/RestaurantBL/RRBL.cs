@@ -20,8 +20,7 @@ public class RRBL : IBL
     /// <exception cref="DuplicateRecordException">When there is a restaurant that already exists</exception>
     public void AddRestaurant(Restaurant restaurantToAdd)
     {
-       IRepository repository = new SqlRepository();
-        
+       IRepository repository = new SqlRepository();   
     }
 
     /// <summary>

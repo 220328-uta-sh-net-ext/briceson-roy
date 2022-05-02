@@ -1,1 +1,1 @@
-﻿Server=tcp:royzone763.database.windows.net,1433;Initial Catalog=RestaurantAPI;Persist Security Info=False;User ID=briceson763;Password=Z3n0nz4rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+﻿Server=tcp:royzone763.database.windows.net,1433;Initial Catalog=RestaurantDB;Persist Security Info=False;User ID=briceson763;Password=Z3n0nz4rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;

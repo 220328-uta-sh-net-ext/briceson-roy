@@ -63,7 +63,7 @@ namespace RestaurantDL
 
         public List<Restaurant> GetAllRestaurants()
         {
-            string commandString = "SELECT * FROM Restaruant";
+            string commandString = "SELECT * FROM Restaurants";
 
             using SqlConnection connection = new(connectionString);
             using IDbCommand command = new SqlCommand(commandString, connection);
@@ -79,8 +79,8 @@ namespace RestaurantDL
                     AvgRating = (double)reader.GetDecimal(2),
                     City = reader.GetString(3),
                     State = reader.GetString(4),
-                    ZipCode = reader.GetString(5)
-                });
+                    ZipCode = (int)reader.GetInt32(5)
+                }) ;
             }
             return restaurants;
         }
@@ -102,8 +102,8 @@ namespace RestaurantDL
             {
                 users.Add(new User
                 {
-                    Username = (string)row[0],
-                    Password = (string)row[1],
+                    Username = (string)row[1],
+                    Password = (string)row[2],
                 });
             }
 
@@ -131,36 +131,36 @@ namespace RestaurantDL
 
         public Restaurant AddRestaurant(Restaurant restaurantToAdd)
         {
-            string commandString = "INSERT INTO Restaurants (Name, AvgRating, City, State, ZipCode) VALUES (@name, @avg, @city, @state, @zip)";
+            string commandString = "INSERT INTO Restaurants (Name, Rating, City, State, ZipCode) VALUES (@name, @avg, @city, @state, @zip)";
 
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 
-            connection.Open();
-            command.ExecuteNonQuery();
+         
             command.Parameters.AddWithValue("@name", restaurantToAdd.Name);
             command.Parameters.AddWithValue("@avg", restaurantToAdd.AvgRating);
             command.Parameters.AddWithValue("@city", restaurantToAdd.City);
             command.Parameters.AddWithValue("@state", restaurantToAdd.State);
             command.Parameters.AddWithValue("@zip", restaurantToAdd.ZipCode);
-
+            connection.Open();
+            command.ExecuteNonQuery();
 
             return restaurantToAdd;
         }
 
         public void AddReview(int restaurantId, Review reviewToAdd)
         {
-            string commandString = "INSERT INTO Reviews (RestaurantId, Rating, City, State, ZipCode) VALUES (@restaurantId, @rating, @detail)";
+            string commandString = "INSERT INTO Reviews (Rating, Details) VALUES (@restaurantId, @rating, @detail)";
 
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 
-            connection.Open();
-            command.ExecuteNonQuery();
+            
             command.Parameters.AddWithValue("@restaurantid", reviewToAdd.RestaurantId);
             command.Parameters.AddWithValue("@rating", reviewToAdd.Rating);
             command.Parameters.AddWithValue("@detail", reviewToAdd.Note);
-
+            connection.Open();
+            command.ExecuteNonQuery();
         }
 
         public void UpdateAvgRating(int restaurantID, decimal rating)
@@ -170,9 +170,10 @@ namespace RestaurantDL
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 
+            
+            command.Parameters.AddWithValue("@rating", rating);
             connection.Open();
             command.ExecuteNonQuery();
-            command.Parameters.AddWithValue("@rating", rating);
         }
 
         public List<Restaurant> SearchRestaurants(string searchTerm)

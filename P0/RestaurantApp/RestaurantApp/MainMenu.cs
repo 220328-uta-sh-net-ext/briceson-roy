@@ -7,6 +7,7 @@
         {
 
             Console.WriteLine("To Search a Restaurant please press <1>");
+            Console.WriteLine("To Add a Restaurant please press <2>");
             Console.WriteLine("To exit the App please press <0>");
         }
         public string UserChoice()
@@ -17,6 +18,8 @@
             {
                 case "1":
                     return "RestaurantMenu";
+                    case "2":
+                    return "AddRestaurant";
                 case "0":
                     return "Exit";
                 default :

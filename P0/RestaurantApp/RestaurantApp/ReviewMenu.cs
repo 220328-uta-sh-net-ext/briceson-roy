@@ -32,16 +32,17 @@ namespace RestaurantUI
 
         public string UserChoice()
         {
+            Display();
             string userInput = Console.ReadLine();
 
             switch (userInput)
             {
                 case "0":
-                    return "Main Menu";
+                    return "MainMenu";
                 case "1":
                     return "AddReviewMenu";
                 case "2":
-                    return "All Reviews";
+                    return "AllReviews";
                 default:
                     Console.WriteLine("Please enter a valid response");
                     Console.WriteLine("Please press <enter> to continue");

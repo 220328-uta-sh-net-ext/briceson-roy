@@ -32,10 +32,13 @@ while (active)
             menu = new RestaurantMenu();
             break; 
         case "AddRestaurant":
-            menu = new AddRestaurantMenu(bL);
+            menu = new AddRestaurantMenu();
             break;
         case "ReviewMenu":
             menu = new ReviewMenu();
+            break;
+        case "AddReviewMenu":
+            menu = new AddReviewMenu();
             break;
         case "Exit":
             active = false;

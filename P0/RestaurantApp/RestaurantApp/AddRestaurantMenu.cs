@@ -12,21 +12,25 @@ namespace RestaurantUI
     internal class AddRestaurantMenu : IMenu
     {
         private static Restaurant newRestaurant = new Restaurant();
+        private IRepository _repository = new SqlRepository();
 
-        //private IRepository _repository = new Repository(); //UpCasting
- 
-        readonly IBL bL;
+        //private IRepository _repository = new SqlRepository(); //UpCasting
 
-        public AddRestaurantMenu(IBL bL)
-        {
-            this.bL = bL;
-        }
+        //readonly IBL bL;
+        //readonly IRepository repository;
+
+        //public AddRestaurantMenu(IBL bL, IRepository repository)
+        //{
+        //    this.bL = bL;
+        //    this.repository = repository;
+        //}
 
         public void Display()
         {
-            Console.WriteLine("<4> Name - " + newRestaurant.Name);
-            Console.WriteLine("<3> City - " + newRestaurant.City);
-            Console.WriteLine("<2> State - " + newRestaurant.State);
+            Console.WriteLine("<5> Name - " + newRestaurant.Name);
+            Console.WriteLine("<4> City - " + newRestaurant.City);
+            Console.WriteLine("<3> State - " + newRestaurant.State);
+            Console.WriteLine("<2> ZipCode - " + newRestaurant.ZipCode);
             Console.WriteLine("<1> Save");
             Console.WriteLine("<0> Go Back");
         }
@@ -40,28 +44,23 @@ namespace RestaurantUI
                 case "0":
                     return "MainMenu";
                 case "1":
-                    try
-                    {
                         //Log.Information("Adding a pokemon - " + newRestaurant.Name);
-                        bL.AddRestaurant(newRestaurant);
-                        //Log.Information("Pokemon added successfully");
-                    }
-                    catch (Exception ex)
-                    {
-                        //Log.Warning("failed to add pokemon");
-                        Console.WriteLine(ex.Message);
-
-                    }
+                        _repository.AddRestaurant(newRestaurant);
+                        //Log.Information("Pokemon added successfully");                  
                     return "MainMenu";
-                case "2":
-                    Console.Write("Please enter its City: ");
-                    newRestaurant.State = Console.ReadLine();
+                case"2":
+                    Console.WriteLine("Please enter the Zip Code: ");
+                    newRestaurant.ZipCode = Convert.ToInt32(Console.ReadLine());
                     return "AddRestaurant";
                 case "3":
+                    Console.Write("Please enter its State: ");
+                    newRestaurant.State = Console.ReadLine();
+                    return "AddRestaurant";
+                case "4":
                     Console.Write("Please enter its City: ");
                     newRestaurant.City = Console.ReadLine();
                     return "AddRestaurant";
-                case "4":
+                case "5":
                     Console.Write("Please enter the name of the Restaurant: ");
                     newRestaurant.Name = Console.ReadLine();
                     return "AddRestaurant";

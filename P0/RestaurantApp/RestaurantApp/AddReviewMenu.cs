@@ -9,11 +9,14 @@ using Models;
 
 namespace RestaurantUI
 {
-    internal class AddReviewMenu 
+    internal class AddReviewMenu : IMenu
     {
-        private static Review newReview = new Review();
 
+
+        private static Review newReview = new Review();
         private IRepository _repository = new SqlRepository();
+
+      
 
         public void Display()
         {
@@ -33,11 +36,11 @@ namespace RestaurantUI
                 case "1":
                     Console.Write("Please Add the star count to the review: ");
                     newReview.Rating = Convert.ToInt32(Console.ReadLine());
-                    return "AddReview";
+                    return "AddReviewMenu";
                 case "2":
                     Console.Write("Please enter any specific notes you want to add about the service. ");
                     newReview.Note = Console.ReadLine();
-                    return "AddReview";
+                    return "AddReviewMenu";
                 case "3":
                   ;try
                     {

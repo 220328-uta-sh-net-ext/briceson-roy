@@ -25,6 +25,7 @@ namespace RestaurantUI
 
         public string UserChoice()
         {
+            Display();
             string userInput = Console.ReadLine();
             switch (userInput) {
                 case "0":

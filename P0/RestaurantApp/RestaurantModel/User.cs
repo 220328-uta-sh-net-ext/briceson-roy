@@ -17,20 +17,18 @@ namespace RestaurantModel
         public string Username 
         { get => _username ; set
             {
-                Regex pattern = new Regex("^[a-zA-Z0-9 !?']+$");
-                    if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new InputInvalidException("Name can't be empty");
-                }
-                    else if(!pattern.IsMatch(value))
-                    {
-                    throw new InputInvalidException("Username can only have alphanumeric characters, white space, !, ?, and '.");
-                }
-                    else if(value.Length < 25)
-                {
-                    throw new InputInvalidException("Username cannot exceed 25 chars");
-                }
+               Regex pattern = new Regex("^[a-zA-Z0-9 !?']+$");
+                if(!pattern.IsMatch(value))
+                   {
+                   throw new InputInvalidException("Username can only have alphanumeric characters, white space, !, ?, and '.");
+               }
+                   else if(value.Length > 25)
+               {
+                   throw new InputInvalidException("Username cannot exceed 25 chars");
+               }
+                this._username = value;
             }
+           
                 
           }
 
@@ -39,18 +37,16 @@ namespace RestaurantModel
 
         public string Password { get => _password; set {
                 Regex pattern = new Regex("^[a-zA-Z0-9 !?']+$");
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new InputInvalidException("Name can't be empty");
-                }
-                else if (!pattern.IsMatch(value))
+
+                if (!pattern.IsMatch(value))
                 {
                     throw new InputInvalidException("Username can only have alphanumeric characters, white space, !, ?, and '.");
                 }
-                else if (value.Length < 25)
+                else if (value.Length > 25)
                 {
                     throw new InputInvalidException("Username cannot exceed 25 chars");
                 }
+                this._password = value;
             } 
         }   
 
@@ -59,7 +55,7 @@ namespace RestaurantModel
         public User()
         {
             Username = "LoremIpsum";
-            Password = "";
+            Password = "Password";
             isAdmin = false;
         }
 

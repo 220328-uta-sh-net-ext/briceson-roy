@@ -85,19 +85,45 @@ namespace RestaurantDL
             return restaurants;
         }
 
+        public List<User> GetAllUsers()
+        {
+            string commandString = "SELECT * FROM USERS";
+
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new SqlCommand(commandString, connection);
+            IDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet data = new();
+            connection.Open();
+            adapter.Fill(data);
+            connection.Close();
+
+            var users = new List<User>();
+            foreach(DataRow row in data.Tables[0].Rows)
+            {
+                users.Add(new User
+                {
+                    Username = (string)row[0],
+                    Password = (string)row[1],
+                });
+            }
+
+            return users;
+        }
+
 
 
         public User AddUser(User userToAdd)
         {
-            string commandString = "INSERT INTO USER (UserName, isAdmin)";
+            string commandString = "INSERT INTO USERS (UserName, Password) VALUES (@Username, @Password)";
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 
-            connection.Open();
-            command.ExecuteNonQuery();
+            
+            
             command.Parameters.AddWithValue("@Username", userToAdd.Username);
             command.Parameters.AddWithValue("@Password", userToAdd.Password);
-            command.Parameters.AddWithValue("@isAdmin", userToAdd.isAdmin);
+            connection.Open();
+            command.ExecuteNonQuery();
 
             return userToAdd;
 
@@ -105,7 +131,7 @@ namespace RestaurantDL
 
         public Restaurant AddRestaurant(Restaurant restaurantToAdd)
         {
-            string commandString = "INSERT INTO Restaurants (Name, AvgRating, City, State, ZipCode)";
+            string commandString = "INSERT INTO Restaurants (Name, AvgRating, City, State, ZipCode) VALUES (@name, @avg, @city, @state, @zip)";
 
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
@@ -124,7 +150,7 @@ namespace RestaurantDL
 
         public void AddReview(int restaurantId, Review reviewToAdd)
         {
-            string commandString = "INSERT INTO Reviews (RestaurantId, Rating, City, State, ZipCode)";
+            string commandString = "INSERT INTO Reviews (RestaurantId, Rating, City, State, ZipCode) VALUES (@restaurantId, @rating, @detail)";
 
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);

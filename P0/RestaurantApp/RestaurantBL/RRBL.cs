@@ -1,23 +1,16 @@
 ﻿using CustomExceptions;
 using Models;
 using RestaurantDL;
+using RestaurantModel;
 
 namespace RestaurantBL;
 public class RRBL : IBL
 {
-    private readonly IRepository _dl;
-
+    private readonly IRepository _repo;
     public RRBL(IRepository repository)
     {
-        _dl = repository;
+        this._repo = repository;
     }
-
-    public RRBL()
-    {
-    }
-
-
-
 
     /// <summary>
     /// Adds a new restaurant to the list
@@ -48,13 +41,13 @@ public class RRBL : IBL
     /// <returns>list of all restaurants</returns>
     public List<Restaurant> GetAllRestaurants()
     {   
-        var restaurants = _dl.GetAllRestaurants();
+        var restaurants = _repo.GetAllRestaurants();
         return restaurants;
     }
 
     public List<Restaurant> SearchRestaurants(string searchTerm)
     {
-        var restaurants = _dl.GetAllRestaurants();
+        var restaurants = _repo.GetAllRestaurants();
         var filteredRestaurants = restaurants.Where(restaurant => restaurant.Name.Contains(searchTerm)).ToList();
 
         return filteredRestaurants;
@@ -63,9 +56,21 @@ public class RRBL : IBL
 
     public List<Review> GetAllReviews()
     {
-        var reviews = _dl.GetAllReviews();
+        var reviews = _repo.GetAllReviews();
         return reviews;
     }
 
-  
+    public List<User> GetUserName(string Username)
+    {
+        List<User> users = _repo.GetAllUsers();
+        var filteredUsernames = users.Where(user => user.Username.ToLower().Contains(Username)).ToList();
+        return filteredUsernames;
+    }
+
+    public List<User> GetPassword(string Password)
+    {
+        List<User> users = _repo.GetAllUsers();
+        var filteredPasswords = users.Where(user => user.Password.ToLower().Contains(Password)).ToList();
+        return filteredPasswords;
+    }
 }

@@ -38,10 +38,8 @@ namespace RestaurantUI
             {
                 case "0":
                     return "Main Menu";
-                    break;
                 case "1":
                     return "AddReviewMenu";
-                    break;
                 case "2":
                     return "All Reviews";
                 default:

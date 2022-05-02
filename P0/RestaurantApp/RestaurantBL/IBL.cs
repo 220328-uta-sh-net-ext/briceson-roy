@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
+using RestaurantModel;
 
 namespace RestaurantBL
 {
@@ -19,6 +20,9 @@ namespace RestaurantBL
         void AddRestaurant(Restaurant restaurantToAdd);
 
         void AddReview(Review newReview);
+
+        List<User> GetUserName(string Username);
+        List<User> GetPassword(string Password);
 
     }
 

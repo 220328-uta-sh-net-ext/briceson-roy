@@ -5,7 +5,13 @@ using RestaurantDL;
 using Models;
 
 bool active = true;
-IMenu menu = new LoginMenu();
+
+IRepository repository = new SqlRepository();
+IBL bL = new RRBL(repository);
+
+
+
+IMenu menu = new LoginMenu(bL);
 while (active)
 {
     string response = menu.UserChoice();
@@ -14,7 +20,7 @@ while (active)
     {
         case "LoginMenu":
             Console.WriteLine("Returning to start");
-            menu = new LoginMenu();
+            menu = new LoginMenu(bL);
             break;
         case "Register":
             menu = new RegisterUser();               
@@ -26,12 +32,12 @@ while (active)
             menu = new RestaurantMenu();
             break; 
         case "AddRestaurant":
-            menu = new AddRestaurantMenu();
+            menu = new AddRestaurantMenu(bL);
             break;
         case "ReviewMenu":
             menu = new ReviewMenu();
             break;
-        case "exit":
+        case "Exit":
             active = false;
             break;
         default:

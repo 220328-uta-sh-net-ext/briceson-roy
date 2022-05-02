@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RestaurantDL;
 using RestaurantBL;
 using Models;
 
@@ -13,7 +14,13 @@ namespace RestaurantUI
         private static Restaurant newRestaurant = new Restaurant();
 
         //private IRepository _repository = new Repository(); //UpCasting
-        private IBL _repository = new RRBL();
+ 
+        readonly IBL bL;
+
+        public AddRestaurantMenu(IBL bL)
+        {
+            this.bL = bL;
+        }
 
         public void Display()
         {
@@ -26,6 +33,7 @@ namespace RestaurantUI
 
         public string UserChoice()
         {
+            Display();
             string userInput = Console.ReadLine();
             switch (userInput)
             {
@@ -35,7 +43,7 @@ namespace RestaurantUI
                     try
                     {
                         //Log.Information("Adding a pokemon - " + newRestaurant.Name);
-                        _repository.AddRestaurant(newRestaurant);
+                        bL.AddRestaurant(newRestaurant);
                         //Log.Information("Pokemon added successfully");
                     }
                     catch (Exception ex)

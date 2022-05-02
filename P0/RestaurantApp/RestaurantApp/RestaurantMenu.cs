@@ -22,13 +22,13 @@ namespace RestaurantUI
         }
         public string UserChoice()
         {
+            Display();
             string userInput = Console.ReadLine();
 
             switch(userInput)
             {
                 case "0":
                     return "Main Menu";
-                    break;
                 case "1":
                     Console.WriteLine("Please enter a name for the restaurant: ");
                     string name = Console.ReadLine();
@@ -49,7 +49,6 @@ namespace RestaurantUI
                     Console.WriteLine("Press <enter> to continue");
                     Console.ReadLine();
                     return "MainMenu";
-                    break ;
                 case "2":
                     Console.WriteLine("Please enter a name for the restaurant: ");
                     string rating = Console.ReadLine();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantUI
 {
-    internal class RegisterUser : IMenu
+    public class RegisterUser : IMenu
     {
         private static User newAccount = new User();
         private IRepository _repository = new SqlRepository();
@@ -41,6 +41,7 @@ namespace RestaurantUI
 
         public string UserChoice()
         {
+            Display();
            string userInput = Console.ReadLine();
             switch (userInput)
             {
@@ -49,8 +50,6 @@ namespace RestaurantUI
                 newAccount.Username = Console.ReadLine();
                     Console.WriteLine("Enter Password: ");
                     newAccount.Password = Console.ReadLine();
-                   
-                    
                     _repository.AddUser(newAccount);
                     return "LoginMenu";
                 case "0" :

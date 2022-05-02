@@ -11,6 +11,8 @@ namespace RestaurantDL
 
         List<Review> GetSomeReviews(int restaurantId);
 
+        List<User> GetAllUsers();
+
         Restaurant AddRestaurant(Restaurant restaurantToAdd);
 
         void AddReview(int restaurantId, Review reviewToAdd);

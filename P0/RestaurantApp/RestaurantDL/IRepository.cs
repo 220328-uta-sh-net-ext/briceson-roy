@@ -19,9 +19,11 @@ namespace RestaurantDL
 
         User AddUser(User userToAdd);
 
-        void UpdateAvgRating(int restaurantId, decimal rating);
+        //void UpdateAvgRating(int restaurantId, decimal rating);
 
         List<Restaurant> SearchRestaurants(string searchTerm);
+
+        Restaurant GetRestaurantById(int restaurantId);
 
         bool IsDuplicate(Restaurant restaurant);
         void AddReview(Review newReview);

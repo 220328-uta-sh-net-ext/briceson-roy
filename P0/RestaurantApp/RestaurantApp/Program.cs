@@ -37,9 +37,6 @@ while (active)
         case "ReviewMenu":
             menu = new ReviewMenu();
             break;
-        case "AddReviewMenu":
-            menu = new AddReviewMenu();
-            break;
         case "Exit":
             active = false;
             break;

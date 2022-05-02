@@ -42,7 +42,7 @@ namespace RestaurantDL
         }
         public List<Review> GetSomeReviews(int restaurantId)
         {
-            string commandString = "SELECT * FROM Reviews WHERE ";
+            string commandString = $"SELECT * FROM Reviews WHERE RestaurantID = {restaurantId}";
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
             connection.Open();
@@ -75,12 +75,13 @@ namespace RestaurantDL
             {
                 restaurants.Add(new Restaurant
                 {
+                    Id = reader.GetInt32(0),
                     Name = reader.GetString(1),
                     AvgRating = (double)reader.GetDecimal(2),
                     City = reader.GetString(3),
                     State = reader.GetString(4),
                     ZipCode = (int)reader.GetInt32(5)
-                }) ;
+                });
             }
             return restaurants;
         }
@@ -98,7 +99,7 @@ namespace RestaurantDL
             connection.Close();
 
             var users = new List<User>();
-            foreach(DataRow row in data.Tables[0].Rows)
+            foreach (DataRow row in data.Tables[0].Rows)
             {
                 users.Add(new User
                 {
@@ -118,8 +119,8 @@ namespace RestaurantDL
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 
-            
-            
+
+
             command.Parameters.AddWithValue("@Username", userToAdd.Username);
             command.Parameters.AddWithValue("@Password", userToAdd.Password);
             connection.Open();
@@ -136,7 +137,7 @@ namespace RestaurantDL
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 
-         
+
             command.Parameters.AddWithValue("@name", restaurantToAdd.Name);
             command.Parameters.AddWithValue("@avg", restaurantToAdd.AvgRating);
             command.Parameters.AddWithValue("@city", restaurantToAdd.City);
@@ -150,12 +151,12 @@ namespace RestaurantDL
 
         public void AddReview(int restaurantId, Review reviewToAdd)
         {
-            string commandString = "INSERT INTO Reviews (Rating, Details) VALUES (@restaurantId, @rating, @detail)";
+            string commandString = "INSERT INTO Reviews (RestaurantID, Rating, Details) VALUES (@restaurantId, @rating, @detail)";
 
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 
-            
+
             command.Parameters.AddWithValue("@restaurantid", reviewToAdd.RestaurantId);
             command.Parameters.AddWithValue("@rating", reviewToAdd.Rating);
             command.Parameters.AddWithValue("@detail", reviewToAdd.Note);
@@ -163,18 +164,19 @@ namespace RestaurantDL
             command.ExecuteNonQuery();
         }
 
-        public void UpdateAvgRating(int restaurantID, decimal rating)
-        {
-            String commandString = "UPDATE Restaurants SET AvgRating=@avg WHERE id=@restaurantID";
+        //public void UpdateAvgRating(int restaurantID, decimal rating)
+        //{
+        //    String commandString = "UPDATE Restaurants SET AvgRating=@avg WHERE id=@restaurantID";
 
-            using SqlConnection connection = new(connectionString);
-            using SqlCommand command = new(commandString, connection);
+        //    using SqlConnection connection = new(connectionString);
+        //    using SqlCommand command = new(commandString, connection);
 
-            
-            command.Parameters.AddWithValue("@rating", rating);
-            connection.Open();
-            command.ExecuteNonQuery();
-        }
+
+        //    command.Parameters.AddWithValue("@rating", rating);
+        //    connection.Open();
+        //    command.ExecuteNonQuery();
+
+        //}
 
         public List<Restaurant> SearchRestaurants(string searchTerm)
         {
@@ -186,9 +188,61 @@ namespace RestaurantDL
             throw new NotImplementedException();
         }
 
+        public Restaurant GetRestaurantById(int restaurantId)
+        {
+            string commandString = $"Select * from Restaurants WHERE RestaurantID = {restaurantId}";
+
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new(commandString, connection);
+            var restaurant = new Restaurant();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    restaurant.Id = reader.GetInt32(0);
+                    restaurant.Name = reader.GetString(1);
+                    restaurant.AvgRating = (double)reader.GetDecimal(2);
+                    restaurant.City = reader.GetString(3);
+                    restaurant.State = reader.GetString(4);
+                    restaurant.ZipCode = (int)reader.GetInt32(5);
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return restaurant;
+        }
+        /// <summary>
+        /// remove it for later
+        /// </summary>
+        /// <param name="newReview"></param>
         public void AddReview(Review newReview)
         {
-            throw new NotImplementedException();
+
+            string commandString = "INSERT INTO Reviews (RestaurantID, Rating, Details) VALUES (@restaurantId, @rating, @detail)";
+
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new(commandString, connection);
+
+
+            command.Parameters.AddWithValue("@restaurantid", newReview.RestaurantId);
+            command.Parameters.AddWithValue("@rating", newReview.Rating);
+            command.Parameters.AddWithValue("@detail", newReview.Note);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
     }
 }

@@ -16,8 +16,8 @@ namespace RestaurantUI
         {
             Console.WriteLine("Please select an option to filter the restaurant database");
             Console.WriteLine("Press <1> By Name");
-            Console.WriteLine("Press <2> By Average Rating");
-            Console.WriteLine("Press <3> By Zip Code");
+            Console.WriteLine("Press <2> By ZipCode");
+            Console.WriteLine("Press <3> By ID");
             Console.WriteLine("Press <0> Go Back");
         }
         public string UserChoice()
@@ -39,7 +39,7 @@ namespace RestaurantUI
                         {
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());
-                            return "ReviewMenu";
+                            return "MainMenu";
                         }
                     }
                     else
@@ -51,26 +51,6 @@ namespace RestaurantUI
                     return "MainMenu";
                 case "2":
                     Console.WriteLine("Please enter a name for the restaurant: ");
-                    string rating = Console.ReadLine();
-                    var resultsTwo = repository.SearchRestaurants(rating);
-                    if (resultsTwo.Count() > 0)
-                    {
-                        foreach (var result in resultsTwo)
-                        {
-                            Console.WriteLine("=================");
-                            Console.WriteLine(result.ToString());
-                            return "ReviewMenu";
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Restaurant with search string {rating} not found");
-                    }
-                    Console.WriteLine("Press <enter> to continue");
-                    Console.ReadLine();
-                    return "MainMenu";
-                case "3":
-                    Console.WriteLine("Please enter a name for the restaurant: ");
                     string zipCode = Console.ReadLine();
                     var resultsThree = repository.SearchRestaurants(zipCode);
                     if (resultsThree.Count() > 0)
@@ -79,7 +59,7 @@ namespace RestaurantUI
                         {
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());
-                            return "ReviewMenu";
+                            return "MainMenu";
                         }
                     }
                     else
@@ -89,6 +69,18 @@ namespace RestaurantUI
                     Console.WriteLine("Press <enter> to continue");
                     Console.ReadLine();
                     return "MainMenu";
+                case "3":
+                    Console.WriteLine("Please enter a valid Id for the restaurant you want: ");
+                    int id = Convert.ToInt32(Console.ReadLine());
+                    var resultsFour = repository.GetRestaurantById(id);
+                    if (resultsFour != null)
+                    {
+                        Console.WriteLine("=================");
+                        Console.WriteLine(resultsFour.ToString());
+                        var menu = new AddReviewMenu(id);
+                        menu.UserChoice();
+                    }
+                    return "Add";
                 default:
                     Console.WriteLine("Please enter a valid response");
                     Console.WriteLine("Please press <enter> to continue");

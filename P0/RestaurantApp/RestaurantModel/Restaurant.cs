@@ -36,7 +36,6 @@ public class Restaurant
         this.City = row["City"].ToString() ?? "";
         this.State = row["State"].ToString() ?? "";
         this.ZipCode = (int)row["ZipCode"];
-        this.AvgRating = (double)row["AvgRating"];
     }
 
     public int Id { get; set; }
@@ -69,31 +68,14 @@ public class Restaurant
     }
 
 
-    // //our own custom getter and setter for the private backing field
-    // public string GetName() {
-    //     return this._name;
-    // }
-    // public void SetName(string name)
-    // {
-    //     //input validation
-    //     if(name == "")
-    //     {
-    //         Console.WriteLine("Name Cannot Be Empty");
-    //     }
-    //     this._name = name;
-    // }
-
-    // private string _city;
-
     public string City { get; set; }
     public string State { get; set; }
     public int ZipCode { get; set; }
-    public double AvgRating { get; set; }
     public List<Review> Reviews { get; set; }
 
     public override string ToString()
     {
-        return $"Id: {this.Id} \nName: {this.Name} \nCity: {this.City} \nState: {this.State} \nZipCode: {this.ZipCode} \nAvgRating: {this.AvgRating}";
+        return $"Id: {this.Id} \nName: {this.Name} \nCity: {this.City} \nState: {this.State} \nZipCode: {this.ZipCode}";
     }
 
     /// <summary>

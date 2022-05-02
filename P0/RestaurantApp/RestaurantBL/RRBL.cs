@@ -48,9 +48,12 @@ public class RRBL : IBL
     {
         var restaurants = _repo.GetAllRestaurants();
         var filteredRestaurants = restaurants.Where(restaurant => restaurant.Name.Contains(searchTerm)).ToList();
-
         return filteredRestaurants;
 
+    }
+    public Restaurant GetRestaurantById(int id)
+    {
+        throw new NotImplementedException();
     }
 
     public List<Review> GetAllReviews()

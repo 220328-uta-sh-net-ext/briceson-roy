@@ -11,12 +11,15 @@ namespace RestaurantUI
 {
     internal class AddReviewMenu : IMenu
     {
-
+        int id;
 
         private static Review newReview = new Review();
         private IRepository _repository = new SqlRepository();
 
-      
+        public AddReviewMenu(int id)
+        {
+            this.id = id;    
+        }
 
         public void Display()
         {
@@ -36,14 +39,15 @@ namespace RestaurantUI
                 case "1":
                     Console.Write("Please Add the star count to the review: ");
                     newReview.Rating = Convert.ToInt32(Console.ReadLine());
-                    return "AddReviewMenu";
+                    goto case "2";
                 case "2":
                     Console.Write("Please enter any specific notes you want to add about the service. ");
                     newReview.Note = Console.ReadLine();
-                    return "AddReviewMenu";
+                    goto case "3";
                 case "3":
-                  ;try
+                  try
                     {
+                        newReview.RestaurantId = id;
                         _repository.AddReview(newReview);
                     }
                     catch (Exception ex)

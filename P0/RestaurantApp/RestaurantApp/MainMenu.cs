@@ -18,8 +18,10 @@
             {
                 case "1":
                     return "RestaurantMenu";
-                    case "2":
+                case "2":
                     return "AddRestaurant";
+                case "3":
+                    return "ReviewMenu";
                 case "0":
                     return "Exit";
                 default :

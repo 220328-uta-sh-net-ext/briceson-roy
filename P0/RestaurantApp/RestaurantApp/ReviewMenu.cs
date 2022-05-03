@@ -10,7 +10,7 @@ namespace RestaurantUI
 {
     internal class ReviewMenu : IMenu
     {
-        private readonly IBL _b1;
+        private readonly IBL _bL;
 
         public ReviewMenu()
         {
@@ -18,7 +18,7 @@ namespace RestaurantUI
 
         private ReviewMenu(IBL bL)
         {
-            _b1 = bL;
+            _bL = bL;
         }
 
         

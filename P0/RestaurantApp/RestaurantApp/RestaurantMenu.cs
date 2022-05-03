@@ -50,7 +50,7 @@ namespace RestaurantUI
                     Console.ReadLine();
                     return "MainMenu";
                 case "2":
-                    Console.WriteLine("Please enter a name for the restaurant: ");
+                    Console.WriteLine("Please enter a ZipCode for the restaurant: ");
                     string zipCode = Console.ReadLine();
                     var resultsThree = repository.SearchRestaurants(zipCode);
                     if (resultsThree.Count() > 0)

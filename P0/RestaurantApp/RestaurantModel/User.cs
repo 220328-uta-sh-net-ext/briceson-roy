@@ -61,7 +61,7 @@ namespace RestaurantModel
 
         public override string ToString()
         {
-            return $"Welcome to Restaurant review. Your UserName is {Username} and Password is {Password}";
+            return $" UserName - {Username}, Password - {Password}";
         }
 
         class Admin : User

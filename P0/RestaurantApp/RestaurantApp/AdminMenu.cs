@@ -14,7 +14,10 @@ namespace RestaurantUI
         private IRepository _repository = new SqlRepository();
         readonly IBL bL;
 
-
+        public AdminMenu(IBL bL)
+        {
+            this.bL = bL;
+        }
 
         public void Display()
         {
@@ -53,12 +56,10 @@ namespace RestaurantUI
                         {
                             Console.WriteLine("=============");
                             Console.WriteLine(result.ToString());
-                            Console.WriteLine("=============");          
-                        } 
-                      return "AdminMenu";
+                            Console.WriteLine("=============");
+                        }
+                        return "AdminMenu";
                     }
-                    Console.WriteLine("Press <enter> to continue");
-                    Console.ReadLine();
                     return "AdminMenu";
                 case "3":
                     return "MainMenu";

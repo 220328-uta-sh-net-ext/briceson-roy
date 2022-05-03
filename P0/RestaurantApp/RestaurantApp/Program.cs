@@ -29,7 +29,7 @@ while (active)
             menu = new MainMenu();
             break;
         case "AdminMenu":
-            menu = new AdminMenu();
+            menu = new AdminMenu(bL);
             break;
         case "RestaurantMenu":
             menu = new RestaurantMenu();

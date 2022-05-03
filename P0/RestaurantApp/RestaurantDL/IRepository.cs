@@ -13,6 +13,8 @@ namespace RestaurantDL
 
         List<User> GetAllUsers();
 
+        User GetUserByName(string username);
+
         Restaurant AddRestaurant(Restaurant restaurantToAdd);
 
         void AddReview(int restaurantId, Review reviewToAdd);

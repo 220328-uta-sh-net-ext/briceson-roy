@@ -225,11 +225,44 @@ namespace RestaurantDL
             }
             return restaurant;
         }
+
+        public User GetUserByName(string username)
+        {
+            string commandString = $"Select * from USERS WHERE Username = {username}";
+
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new(commandString, connection);
+            var User = new User();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User.Username = reader.GetString(1);
+                    User.Password = reader.GetString(2);
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return User;
+        }
         /// <summary>
         /// remove it for later
         /// </summary>
         /// <param name="newReview"></param>
-        public void AddReview(Review newReview)
+            public void AddReview(Review newReview)
         {
 
             string commandString = "INSERT INTO Reviews (RestaurantID, Rating, Details) VALUES (@restaurantId, @rating, @detail)";

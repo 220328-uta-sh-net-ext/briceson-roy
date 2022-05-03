@@ -73,7 +73,7 @@ public class RRBL : IBL
     public List<User> GetUserAccounts(string Username)
     {
         List <User> users = _repo.GetAllUsers();
-        var filteredAccounts = users.Where(user => user.Username.ToLower().Contains(Username)).ToList();
+        var filteredAccounts = users.Where(user => user.Username.ToLower().Equals(Username)).ToList();
         return filteredAccounts;
     }
 

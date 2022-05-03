@@ -12,6 +12,13 @@ namespace RestaurantUI
     {
         static IRepository repository = new SqlRepository();
 
+         readonly IBL bL;
+
+        public RestaurantMenu(IBL bL)
+        {
+            this.bL = bL;
+        }
+
         public void Display()
         {
             Console.WriteLine("Please select an option to filter the restaurant database");
@@ -31,15 +38,15 @@ namespace RestaurantUI
                     return "Main Menu";
                 case "1":
                     Console.WriteLine("Please enter a name for the restaurant: ");
-                    string name = Console.ReadLine();
-                    var results = repository.SearchRestaurants(name);
+                    string name = Console.ReadLine().Trim();
+                    var results = bL.SearchRestaurants(name);
                     if (results.Count() > 0)
                     {
                         foreach(var result in results)
                         {
                             Console.WriteLine("=================");
-                            Console.WriteLine(result.ToString());
-                            return "MainMenu";
+                            Console.WriteLine(result.ToString());  
+                            Console.WriteLine("=================");
                         }
                     }
                     else
@@ -59,8 +66,7 @@ namespace RestaurantUI
                         {
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());
-                            return "MainMenu";
-                        }
+                        } 
                     }
                     else
                     {
@@ -80,7 +86,7 @@ namespace RestaurantUI
                         var menu = new AddReviewMenu(id);
                         menu.UserChoice();
                     }
-                    return "Add";
+                    return "MainMenu";
                 default:
                     Console.WriteLine("Please enter a valid response");
                     Console.WriteLine("Please press <enter> to continue");

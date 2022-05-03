@@ -135,7 +135,7 @@ namespace RestaurantDL
 
         public Restaurant AddRestaurant(Restaurant restaurantToAdd)
         {
-            string commandString = "INSERT INTO Restaurants (Name, Rating, City, State, ZipCode) VALUES (@name, @avg, @city, @state, @zip)";
+            string commandString = "INSERT INTO Restaurants (Name, City, State, ZipCode) VALUES (@name, @city, @state, @zip)";
 
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);

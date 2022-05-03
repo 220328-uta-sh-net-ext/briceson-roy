@@ -38,25 +38,24 @@ namespace RestaurantUI
             {
                 case "1":
                     Console.WriteLine("Enter your username: ");
-                    var Username = Console.ReadLine();
-                    List<User> nameResult = bL.GetUserName(Username);
-                    if(nameResult.Count > 0)
+                    string Username = Console.ReadLine();
+                    Console.WriteLine("Enter Password: ");
+                    string Password = Console.ReadLine();
+                    List<User> nameResult = bL.GetUserName(Username, Password);
+                    if (nameResult.Count > 0)
                     {
-                        Console.WriteLine("Enter Password: ");
-                        var Password = Console.ReadLine();
-                        List<User> passResult = bL.GetPassword(Password);
-                        if(passResult.Count > 0)
+                        bool isAdmin = nameResult[0].isAdmin;
+                        if (isAdmin)
                         {
-                            Console.WriteLine("Successful Login");
-                            return "MainMenu";
+                            return "AdminMenu";
                         }
-                        else
-                        {
+                        return "MainMenu";
+                    }
+                    else
+                    {
                         Console.WriteLine("UserName or Password is invalid. Try again...");
                         goto case "1";
-                         }
                     }
-                    Console.WriteLine("Please enter Valid UserName");
                     goto case "1";
                 case "2":
                     Console.WriteLine("Heading to registration");

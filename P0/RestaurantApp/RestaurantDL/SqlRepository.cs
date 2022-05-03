@@ -77,10 +77,9 @@ namespace RestaurantDL
                 {
                     Id = reader.GetInt32(0),
                     Name = reader.GetString(1),
-                    AvgRating = (double)reader.GetDecimal(2),
-                    City = reader.GetString(3),
-                    State = reader.GetString(4),
-                    ZipCode = (int)reader.GetInt32(5)
+                    City = reader.GetString(2),
+                    State = reader.GetString(3),
+                    ZipCode = (int)reader.GetInt32(4)
                 });
             }
             return restaurants;
@@ -105,6 +104,7 @@ namespace RestaurantDL
                 {
                     Username = (string)row[1],
                     Password = (string)row[2],
+                    isAdmin = (bool)row[3]
                 });
             }
 
@@ -115,7 +115,7 @@ namespace RestaurantDL
 
         public User AddUser(User userToAdd)
         {
-            string commandString = "INSERT INTO USERS (UserName, Password) VALUES (@Username, @Password)";
+            string commandString = "INSERT INTO USERS (UserName, Password, isAdmin) VALUES (@Username, @Password, @isAdmin)";
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 
@@ -123,8 +123,11 @@ namespace RestaurantDL
 
             command.Parameters.AddWithValue("@Username", userToAdd.Username);
             command.Parameters.AddWithValue("@Password", userToAdd.Password);
+            command.Parameters.AddWithValue("@isAdmin", userToAdd.isAdmin);
+
             connection.Open();
             command.ExecuteNonQuery();
+            connection.Close();
 
             return userToAdd;
 
@@ -139,7 +142,6 @@ namespace RestaurantDL
 
 
             command.Parameters.AddWithValue("@name", restaurantToAdd.Name);
-            command.Parameters.AddWithValue("@avg", restaurantToAdd.AvgRating);
             command.Parameters.AddWithValue("@city", restaurantToAdd.City);
             command.Parameters.AddWithValue("@state", restaurantToAdd.State);
             command.Parameters.AddWithValue("@zip", restaurantToAdd.ZipCode);
@@ -203,10 +205,9 @@ namespace RestaurantDL
                 {
                     restaurant.Id = reader.GetInt32(0);
                     restaurant.Name = reader.GetString(1);
-                    restaurant.AvgRating = (double)reader.GetDecimal(2);
-                    restaurant.City = reader.GetString(3);
-                    restaurant.State = reader.GetString(4);
-                    restaurant.ZipCode = (int)reader.GetInt32(5);
+                    restaurant.City = reader.GetString(2);
+                    restaurant.State = reader.GetString(3);
+                    restaurant.ZipCode = (int)reader.GetInt32(4);
                 }
 
             }

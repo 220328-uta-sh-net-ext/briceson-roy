@@ -50,7 +50,10 @@ namespace RestaurantUI
                 newAccount.Username = Console.ReadLine();
                     Console.WriteLine("Enter Password: ");
                     newAccount.Password = Console.ReadLine();
+                    newAccount.isAdmin = false;
                     _repository.AddUser(newAccount);
+                    
+                    
                     return "LoginMenu";
                 case "0" :
                     Console.WriteLine("Returning");

@@ -21,9 +21,9 @@ namespace RestaurantBL
 
         void AddReview(Review newReview);
 
-        List<User> GetUserName(string Username);
-        List<User> GetPassword(string Password);
+        List<User> GetUserName(string Username, string Password);
 
+        public List<User> GetUserAccounts(string Username);
     }
 
     interface IRestaurantSearch

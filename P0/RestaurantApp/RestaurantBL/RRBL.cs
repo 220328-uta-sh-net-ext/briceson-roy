@@ -62,17 +62,23 @@ public class RRBL : IBL
         return reviews;
     }
 
-    public List<User> GetUserName(string Username)
+    public List<User> GetUserName(string Username, string Password)
     {
         List<User> users = _repo.GetAllUsers();
-        var filteredUsernames = users.Where(user => user.Username.ToLower().Contains(Username)).ToList();
+        var filteredUsernames = users.Where(user => user.Username.ToLower().Contains(Username)
+        && user.Password.ToLower().Contains(Password)).ToList();
         return filteredUsernames;
     }
 
-    public List<User> GetPassword(string Password)
+    public List<User> GetUserAccounts(string Username)
     {
-        List<User> users = _repo.GetAllUsers();
-        var filteredPasswords = users.Where(user => user.Password.ToLower().Contains(Password)).ToList();
-        return filteredPasswords;
+        List <User> users = _repo.GetAllUsers();
+        var filteredAccounts = users.Where(user => user.Username.ToLower().Contains(Username)).ToList();
+        return filteredAccounts;
     }
+
+
+  
+
+
 }

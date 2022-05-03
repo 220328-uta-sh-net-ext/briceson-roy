@@ -28,6 +28,9 @@ while (active)
         case "MainMenu":
             menu = new MainMenu();
             break;
+        case "AdminMenu":
+            menu = new AdminMenu();
+            break;
         case "RestaurantMenu":
             menu = new RestaurantMenu();
             break; 

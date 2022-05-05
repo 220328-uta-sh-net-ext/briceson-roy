@@ -24,8 +24,8 @@ public class Review
 
     public int RestaurantId { get; set; }
 
-    private int _rating;
-    public int Rating
+    private decimal _rating;
+    public decimal Rating
     {
         get => _rating;
         //For the setter, we are checking that the rating is between 1 and 5

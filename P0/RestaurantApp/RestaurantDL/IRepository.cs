@@ -9,8 +9,6 @@ namespace RestaurantDL
 
         List<Review> GetAllReviews();
 
-        List<Review> GetSomeReviews(int restaurantId);
-
         List<User> GetAllUsers();
 
         User GetUserByName(string username);

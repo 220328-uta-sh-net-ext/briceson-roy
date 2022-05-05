@@ -44,6 +44,11 @@ public class RRBL : IBL
         return restaurants;
     }
 
+    /// <summary>
+    /// Searches the Restaurants by a search term
+    /// </summary>
+    /// <param name="searchTerm"></param>
+    /// <returns></returns>
     public List<Restaurant> SearchRestaurants(string searchTerm)
     {
         var restaurants = _repo.GetAllRestaurants();
@@ -51,6 +56,8 @@ public class RRBL : IBL
         return filteredRestaurants;
 
     }
+
+
     public Restaurant GetRestaurantById(int id)
     {
         throw new NotImplementedException();
@@ -62,6 +69,7 @@ public class RRBL : IBL
         return reviews;
     }
 
+    
     
 
     public List<User> GetUserName(string Username, string Password)

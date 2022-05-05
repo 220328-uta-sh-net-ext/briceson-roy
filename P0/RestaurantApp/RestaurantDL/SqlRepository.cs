@@ -24,62 +24,67 @@ namespace RestaurantDL
         {
             string commandString = "SELECT * FROM Reviews";
             using SqlConnection connection = new(connectionString);
-            using SqlCommand command = new(commandString, connection);
+            using SqlCommand command = new SqlCommand(commandString, connection);
+            IDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet data = new();
             connection.Open();
-            using SqlDataReader reader = command.ExecuteReader();
+            adapter.Fill(data);
+            connection.Close();
 
             var reviews = new List<Review>();
-            while (reader.Read())
+            foreach (DataRow row in data.Tables[0].Rows)
             {
                 reviews.Add(new Review
                 {
-                    Rating = reader.GetInt32(3),
-                    Note = reader.GetString(4)
+                    RestaurantId = (int)row["RestaurantID"],
+                    Rating = (decimal)row["Rating"],
+                    Note = (string)row["Details"]
                 });
 
             }
             return reviews;
         }
-        public List<Review> GetSomeReviews(int restaurantId)
-        {
-            string commandString = $"SELECT * FROM Reviews WHERE RestaurantID = {restaurantId}";
-            using SqlConnection connection = new(connectionString);
-            using SqlCommand command = new(commandString, connection);
-            connection.Open();
-            using SqlDataReader reader = command.ExecuteReader();
 
-            var reviews = new List<Review>();
-            while (reader.Read())
-            {
-                reviews.Add(new Review
-                {
-                    Rating = reader.GetInt32(3),
-                    Note = reader.GetString(4)
-                });
-
-            }
-            return reviews;
-        }
+     
 
         public List<Restaurant> GetAllRestaurants()
-        {
+        {   var getReviews = GetAllReviews();
             string commandString = "SELECT * FROM Restaurants";
 
             using SqlConnection connection = new(connectionString);
             using IDbCommand command = new SqlCommand(commandString, connection);
             connection.Open();
             using IDataReader reader = command.ExecuteReader();
+            
 
             var restaurants = new List<Restaurant>();
+            int idCount = 1;
+
             while (reader.Read())
             {
+                decimal rating = 0.0M;
+                int counter = 0;
+                foreach(Review review in getReviews)
+                {
+                    if (idCount == review.RestaurantId)
+                    {
+                        counter++;
+                        rating += review.Rating;
+                    }
+                } 
+                idCount++;
+                if (counter != 0)
+                      rating /= counter; 
+                
+
                 restaurants.Add(new Restaurant
                 {
                     Id = reader.GetInt32(0),
                     Name = reader.GetString(1),
                     City = reader.GetString(2),
                     State = reader.GetString(3),
-                    ZipCode = (int)reader.GetInt32(4)
+                    ZipCode = (int)reader.GetInt32(4),
+                    Rating = rating,
                 });
             }
             return restaurants;

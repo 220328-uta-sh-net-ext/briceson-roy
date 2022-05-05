@@ -10,24 +10,24 @@ namespace RestaurantBL
 {
     public class RatingCalc
     {
-        public static double AverageRating()
-        {
-            SqlRepository reviews = new SqlRepository();
-            var review = reviews.GetAllReviews();
+        //public static object AverageRating()
+        //{
+            //SqlRepository reviews = new SqlRepository();
+            //var review = reviews.GetAllReviews();
 
 
-            double sum = 0;
+            //double sum = 0;
             //Get all the ratings for a restaurant
-            for(int i = 0; i < review.Count; i++)
-            {
-                sum += review[i].Rating;
-            }
+            //for(int i = 0; i < review.Count; i++)
+            //{
+            //    sum + review[i].Rating;
+            //}
 
             //Add them up and divid
 
-           return Math.Round(sum / review.Count, 2);
+           //return Math.Round(sum / review.Count, 2);
             //send result to the repository
            
-        }
+        //}
     }
 }

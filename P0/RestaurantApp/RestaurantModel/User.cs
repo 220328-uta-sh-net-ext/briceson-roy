@@ -15,40 +15,12 @@ namespace RestaurantModel
         //Username
         private string _username;
         public string Username 
-        { get => _username ; set
-            {
-               Regex pattern = new Regex("^[a-zA-Z0-9 !?']+$");
-                if(!pattern.IsMatch(value))
-                   {
-                   throw new InputInvalidException("Username can only have alphanumeric characters, white space, !, ?, and '.");
-               }
-                   else if(value.Length > 25)
-               {
-                   throw new InputInvalidException("Username cannot exceed 25 chars");
-               }
-                this._username = value;
-            }
-           
-                
-          }
+        { get ; set; }
 
         //Password
         private string _password;
 
-        public string Password { get => _password; set {
-                Regex pattern = new Regex("^[a-zA-Z0-9 !?']+$");
-
-                if (!pattern.IsMatch(value))
-                {
-                    throw new InputInvalidException("Username can only have alphanumeric characters, white space, !, ?, and '.");
-                }
-                else if (value.Length > 25)
-                {
-                    throw new InputInvalidException("Username cannot exceed 25 chars");
-                }
-                this._password = value;
-            } 
-        }   
+        public string Password { get ; set;}   
 
         public bool isAdmin { get; set; }
 

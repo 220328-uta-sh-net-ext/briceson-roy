@@ -1,4 +1,5 @@
 ﻿using RestaurantDL;
+using RestaurantBL;
 using RestaurantModel;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,13 @@ namespace RestaurantUI
     {
         private static User newAccount = new User();
         private IRepository _repository = new SqlRepository();
+
+        readonly IBL bL;
+
+        public RegisterUser(IBL bL)
+        {
+            this.bL = bL;
+        }
 
         public void Display()
         {
@@ -48,12 +56,32 @@ namespace RestaurantUI
                 case "1" :
                 Console.WriteLine("Enter your username: ");
                 newAccount.Username = Console.ReadLine();
+                newAccount.Username = newAccount.Username.Trim();
+                    List<User> existingUsers = bL.GetUserName(newAccount.Username);
+                    foreach (User user in existingUsers)
+                    {
+                        if (user.Username == newAccount.Username)
+                        {
+                            Console.WriteLine("Desired username is already in use please type in a new user");
+                            goto case "1";
+                        }
+                        break;
+                    }
                     Console.WriteLine("Enter Password: ");
-                    newAccount.Password = Console.ReadLine();
-                    newAccount.isAdmin = false;
-                    _repository.AddUser(newAccount);
-                    
-                    
+                newAccount.Password = Console.ReadLine();
+                newAccount.Password = newAccount.Password.Trim();   
+                if (newAccount.Username.Length > 0 && newAccount.Password.Length > 0)
+                {
+                       
+                        newAccount.isAdmin = false;
+                        _repository.AddUser(newAccount);
+                }
+               else{
+                        Console.WriteLine("The Username and/or password can not be empty please input valid inputs");
+                        goto case "1";
+                }
+
+
                     return "LoginMenu";
                 case "0" :
                     Console.WriteLine("Returning");

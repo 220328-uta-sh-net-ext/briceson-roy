@@ -19,8 +19,6 @@ namespace RestaurantDL
 
         User AddUser(User userToAdd);
 
-        //void UpdateAvgRating(int restaurantId, decimal rating);
-
         List<Restaurant> SearchRestaurants(string searchTerm);
 
         Restaurant GetRestaurantById(int restaurantId);

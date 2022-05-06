@@ -26,7 +26,7 @@ while (active)
             menu = new LoginMenu(bL);
             break;
         case "Register":
-            menu = new RegisterUser();               
+            menu = new RegisterUser(bL);               
             break;
         case "MainMenu":
             menu = new MainMenu();

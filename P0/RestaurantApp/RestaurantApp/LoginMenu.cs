@@ -41,7 +41,7 @@ namespace RestaurantUI
                     string Username = Console.ReadLine();
                     Console.WriteLine("Enter Password: ");
                     string Password = Console.ReadLine();
-                    List<User> nameResult = bL.GetUserName(Username, Password);
+                    List<User> nameResult = bL.GetUserAccount(Username, Password);
                     if (nameResult.Count > 0)
                     {
                         bool isAdmin = nameResult[0].isAdmin;

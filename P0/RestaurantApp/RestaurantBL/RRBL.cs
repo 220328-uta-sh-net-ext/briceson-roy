@@ -52,9 +52,23 @@ public class RRBL : IBL
     public List<Restaurant> SearchRestaurants(string searchTerm)
     {
         var restaurants = _repo.GetAllRestaurants();
-        var filteredRestaurants = restaurants.Where(restaurant => restaurant.Name.Contains(searchTerm)).ToList();
+        var filteredRestaurants = restaurants.Where(restaurant => restaurant.Name.ToLower().Contains(searchTerm)).ToList();
         return filteredRestaurants;
 
+    }
+
+    public List<Restaurant> SearchRestaurantsByState(string searchState)
+    {
+        var restaurants = _repo.GetAllRestaurants();
+        var filteredByState = restaurants.Where(restaurant => restaurant.State.Contains(searchState)).ToList();
+        return filteredByState;
+    }
+
+    public List<Restaurant> SearchRestaurantByZipCode(int searchZip)
+    {
+        var restaurants = _repo.GetAllRestaurants();
+        var filteredByZip = restaurants.Where(restaurant => restaurant.ZipCode.Equals(searchZip)).ToList();
+        return filteredByZip;
     }
 
 
@@ -72,13 +86,19 @@ public class RRBL : IBL
     
     
 
-    public List<User> GetUserName(string Username, string Password)
+    public List<User> GetUserAccount(string Username, string Password)
     {
         List<User> users = _repo.GetAllUsers();
         var filteredUsernames = users.Where(user => user.Username.ToLower().Contains(Username)
         && user.Password.ToLower().Contains(Password)).ToList();
         return filteredUsernames;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="Username"></param>
+    /// <returns>returns the account info that an admin searches for</returns>
 
     public List<User> GetUserAccounts(string Username)
     {
@@ -87,8 +107,10 @@ public class RRBL : IBL
         return filteredAccounts;
     }
 
-
-  
-
-
+    public List<User> GetUserName(string Username)
+    {
+        List<User> users = _repo.GetAllUsers();
+        var filteredUserNames = users.Where(user => user.Username.ToLower().Equals(Username)).ToList();
+        return filteredUserNames;
+    }
 }

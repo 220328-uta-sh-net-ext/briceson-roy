@@ -1,14 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
+global using Serilog;
 using RestaurantUI;
 using RestaurantBL;
 using RestaurantDL;
-using Models;
+
 
 bool active = true;
 
 IRepository repository = new SqlRepository();
 IBL bL = new RRBL(repository);
-
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("C:/Users/royzo/Desktop/Projects/Revature/briceson-roy/P0/RestaurantApp/RestaurantApp/Logs/LogFile.txt").MinimumLevel.Information()
+    .CreateLogger();
 
 
 IMenu menu = new LoginMenu(bL);

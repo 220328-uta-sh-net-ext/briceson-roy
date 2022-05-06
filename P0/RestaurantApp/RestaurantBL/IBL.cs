@@ -13,6 +13,10 @@ namespace RestaurantBL
     {
         List<Restaurant> SearchRestaurants(string searchString);
 
+        List<Restaurant> SearchRestaurantsByState(string searchState);
+
+        List<Restaurant> SearchRestaurantByZipCode(int searchZip);
+
         List<Restaurant> GetAllRestaurants();
 
         List<Review> GetAllReviews();
@@ -21,7 +25,9 @@ namespace RestaurantBL
 
         void AddReview(Review newReview);
 
-        List<User> GetUserName(string Username, string Password);
+        List<User> GetUserAccount(string Username, string Password);
+
+        List<User> GetUserName(string Username);
 
      
 

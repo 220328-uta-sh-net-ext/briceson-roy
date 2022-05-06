@@ -24,7 +24,8 @@ namespace RestaurantUI
             Console.WriteLine("Please select an option to filter the restaurant database");
             Console.WriteLine("Press <1> By Name");
             Console.WriteLine("Press <2> By ZipCode");
-            Console.WriteLine("Press <3> By ID");
+            Console.WriteLine("Press <3> By State");
+            Console.WriteLine("Press <4> By ID");
             Console.WriteLine("Press <0> Go Back");
         }
         public string UserChoice()
@@ -39,7 +40,7 @@ namespace RestaurantUI
                 case "1":
                     Console.WriteLine("Please enter a name for the restaurant: ");
                     string name = Console.ReadLine().Trim();
-                    var results = bL.SearchRestaurants(name);
+                    var results = repository.SearchRestaurants(name);
                     if (results.Count() > 0)
                     {
                         foreach(var result in results)
@@ -59,23 +60,52 @@ namespace RestaurantUI
                 case "2":
                     Console.WriteLine("Please enter a ZipCode for the restaurant: ");
                     string zipCode = Console.ReadLine();
-                    var resultsThree = repository.SearchRestaurants(zipCode);
-                    if (resultsThree.Count() > 0)
+                    int zipCodeInt;
+                    bool canConvert = int.TryParse(zipCode, out zipCodeInt);
+                    if(canConvert == false)
                     {
-                        foreach (var result in resultsThree)
+                       Console.WriteLine("Input can not be converted please input valid input.");
+                        goto case "2";
+                    }
+                    var resultsZip = bL.SearchRestaurantByZipCode(zipCodeInt);
+                    if (resultsZip.Count > 0)
+                    {
+                        foreach (var result in resultsZip)
                         {
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());
-                        } 
+                        }
                     }
                     else
                     {
                         Console.WriteLine($"Restaurant with search string {zipCode} not found");
+                        //goto case "2";
                     }
+
+
                     Console.WriteLine("Press <enter> to continue");
                     Console.ReadLine();
                     return "MainMenu";
                 case "3":
+                    Console.WriteLine("Please enter a State for the restaurant: ");
+                    string state = Console.ReadLine();
+                    var resultsState = bL.SearchRestaurantsByState(state);
+                    if (resultsState.Count() > 0)
+                    {
+                        foreach (var result in resultsState)
+                        {
+                            Console.WriteLine("=================");
+                            Console.WriteLine(result.ToString());
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Restaurant with search string {state} not found");
+                    }
+                    Console.WriteLine("Press <enter> to continue");
+                    Console.ReadLine();
+                    return "MainMenu";
+                case "4":
                     Console.WriteLine("Please enter a valid Id for the restaurant you want: ");
                     int id = Convert.ToInt32(Console.ReadLine());
                     var resultsFour = repository.GetRestaurantById(id);

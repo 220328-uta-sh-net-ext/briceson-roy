@@ -47,8 +47,10 @@ namespace RestaurantUI
                         bool isAdmin = nameResult[0].isAdmin;
                         if (isAdmin)
                         {
+                            Log.Information($"Admin {Username}, has logged in.");
                             return "AdminMenu";
                         }
+                        Log.Information($"User, {Username}, has logged in");
                         return "MainMenu";
                     }
                     else

@@ -68,13 +68,14 @@ namespace RestaurantUI
                         break;
                     }
                     Console.WriteLine("Enter Password: ");
-                newAccount.Password = Console.ReadLine();
-                newAccount.Password = newAccount.Password.Trim();   
+                    newAccount.Password = Console.ReadLine();
+                    newAccount.Password = newAccount.Password.Trim();   
                 if (newAccount.Username.Length > 0 && newAccount.Password.Length > 0)
                 {
                        
                         newAccount.isAdmin = false;
                         _repository.AddUser(newAccount);
+                        Log.Information($"New User Created at {newAccount.Username} created successfully."); 
                 }
                else{
                         Console.WriteLine("The Username and/or password can not be empty please input valid inputs");

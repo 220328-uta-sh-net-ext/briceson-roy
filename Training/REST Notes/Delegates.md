@@ -215,3 +215,174 @@ class Program
 
     8) Delegate is used to declare an event and anonymous methods in C#.
 ```
+
+# Func Delegate
+
+C# includes built-in generic delegate types Func and Action, so that you don't need to define custom delegates manually in most cases.
+
+Func is a generic delegate included in the System namespace. It has zero or more input parameters and one out parameter. The last parameter is considered as an out parameter.
+
+```
+namespace System
+{
+    public delegate TResult Func<in T, out TResult>(T arg);
+}
+```
+
+The last parameter in the angle brackets <> is considered the return type, and the remaining parameters are considered input parameter types, as shown in the following figure.
+
+You can assign any method to the above func delegate that takes two ints and returns an int value.
+
+```
+class Program
+{
+    static int Sum(int x, int y)
+    {
+        return x + y;
+    }
+
+    static void Main(string[] args)
+    {
+        Func<int,int, int> add = Sum;
+
+        int result = add(10, 10);
+
+        Console.WriteLine(result);
+    }
+}
+
+//output
+20
+```
+
+## Func with an Anonymous Method
+
+You can assign an anonymous method to the Func delegate by using the delegate keyword.
+
+```
+Func<int> getRandomNumber = delegate()
+                            {
+                                Random rnd = new Random();
+                                return rnd.Next(1, 100);
+                            };
+```
+
+## With a Lamda Expressions
+
+```
+Func<int> getRandomNumber = () => new Random().Next(1, 100);
+
+//Or
+
+Func<int, int, int>  Sum  = (x, y) => x + y;
+```
+
+### In Summary
+
+```
+1) Func is built-in delegate type.
+
+2) Func delegate type must return a value.
+
+3) Func delegate type can have zero to 16 input parameters.
+
+4) Func delegate does not allow ref and out parameters.
+
+5) Func delegate type can be used with an anonymous method or lambda expression.
+```
+
+# Action Delegate
+
+Action is a delegate type defined in the System namespace. An Action type delegate is the same as Func delegate except that the Action delegate doesn't return a value. In other words, an Action delegate can be used with a method that has a void return type.
+
+## Example
+
+```
+public delegate void Print(int val);
+
+static void ConsolePrint(int i)
+{
+    Console.WriteLine(i);
+}
+
+static void Main(string[] args)
+{
+    Print prnt = ConsolePrint;
+    prnt(10);
+}
+
+//output
+10
+```
+
+
+# Anonymous Methods
+
+As the name suggests, an anonymous method is a method without a name. Anonymous methods in C# can be defined using the delegate keyword and can be assigned to a variable of delegate type.
+
+```
+public delegate void Print(int value);
+
+static void Main(string[] args)
+{
+    Print print = delegate(int val) { 
+        Console.WriteLine("Inside Anonymous method. Value: {0}", val); 
+    };
+
+    print(100);
+}
+
+// OutPut
+Inside Anonymous Value: 100
+```
+
+
+Anonymous methods can access variables defined in an outer function.
+
+```
+public delegate void Print(int value);
+
+static void Main(string[] args)
+{
+    int i = 10;
+    
+    Print prnt = delegate(int val) {
+        val += i;
+        Console.WriteLine("Anonymous method: {0}", val); 
+    };
+
+    prnt(100);
+}
+
+//Output 
+Anonymous value: 110
+```
+
+Anonymous methods can also be passed to a method that accepts the delegate as a parameter.
+
+In the following example, PrintHelperMethod() takes the first parameters of the Print delegate:
+
+```
+public delegate void Print(int value);
+
+class Program
+{
+    public static void PrintHelperMethod(Print printDel,int val)
+    { 
+        val += 10;
+        printDel(val);
+    }
+
+    static void Main(string[] args)
+    {
+        PrintHelperMethod(delegate(int val) { Console.WriteLine("Anonymous method: {0}", val); }, 100);
+    }
+}
+```
+
+## Limitations
+
+It cannot contain jump statement like goto, break or continue.
+It cannot access ref or out parameter of an outer method.
+It cannot have or access unsafe code.
+It cannot be used on the left side of the is operator.

@@ -21,6 +21,8 @@ namespace RestaurantBL
 
         List<Review> GetAllReviews();
 
+        List<Review> GetReviewsById(int id);
+
         void AddRestaurant(Restaurant restaurantToAdd);
 
         void AddReview(Review newReview);

@@ -45,6 +45,6 @@ public class Review
 
     public override string ToString()
     {
-        return $"Rating: {this.Rating} \t Note: {this.Note}";
+        return $"Rating: {this.Rating} \nNote: {this.Note}";
     }
 }

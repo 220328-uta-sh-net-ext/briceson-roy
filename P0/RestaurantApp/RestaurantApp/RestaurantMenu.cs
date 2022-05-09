@@ -48,6 +48,13 @@ namespace RestaurantUI
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());  
                             Console.WriteLine("=================");
+                            var reviewList = bL.GetReviewsById(result.Id);
+                            foreach(var review in reviewList)
+                            {
+                                Console.WriteLine("-----------------");
+                                Console.WriteLine(review); 
+                                Console.WriteLine("-----------------");
+                            }
                         }
                     }
                     else
@@ -74,6 +81,13 @@ namespace RestaurantUI
                         {
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());
+                            var reviewList = bL.GetReviewsById(result.Id);
+                            foreach (var review in reviewList)
+                            {
+                                Console.WriteLine("-----------------");
+                                Console.WriteLine(review);
+                                Console.WriteLine("-----------------");
+                            }
                         }
                     }
                     else
@@ -96,6 +110,12 @@ namespace RestaurantUI
                         {
                             Console.WriteLine("=================");
                             Console.WriteLine(result.ToString());
+                            var reviewList = bL.GetReviewsById(result.Id);
+                            foreach (var review in reviewList)
+                            {
+                                Console.WriteLine(review);
+                                Console.WriteLine("-----------------");
+                            }
                         }
                     }
                     else

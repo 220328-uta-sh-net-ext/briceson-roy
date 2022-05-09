@@ -83,6 +83,13 @@ public class RRBL : IBL
         return reviews;
     }
 
+
+    public List<Review> GetReviewsById(int id)
+    {
+        var restaurants = _repo.GetAllReviews();
+        var filteredReviews = restaurants.Where(restaurant => restaurant.RestaurantId.Equals(id)).ToList();
+        return filteredReviews;
+    }
     
     
 

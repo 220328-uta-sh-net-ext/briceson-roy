@@ -45,7 +45,31 @@ namespace RestaurantDL
             return reviews;
         }
 
-     
+        public List<Review> GetSomeReviews(int restaurantId)
+        {
+            string commandString = $"Select* from Restaurants WHERE RestaurantID = {restaurantId}";
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new SqlCommand(commandString, connection);
+            IDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet data = new();
+            connection.Open();
+            adapter.Fill(data);
+            connection.Close();
+
+            var reviews = new List<Review>();
+            foreach (DataRow row in data.Tables[0].Rows)
+            {
+                reviews.Add(new Review
+                {
+                    RestaurantId = (int)row["RestaurantID"],
+                    Rating = (decimal)row["Rating"],
+                    Note = (string)row["Details"]
+                });
+
+            }
+            return reviews;
+        }
+
 
         public List<Restaurant> GetAllRestaurants()
         {   var getReviews = GetAllReviews();

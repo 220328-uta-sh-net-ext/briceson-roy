@@ -68,9 +68,9 @@ As of now the top 5 cloud providers:
     - Shared resources
     - Collaboration and data sharing
 
-![IaaS-PaaS-SaaS-Cloud-Services.png](file:///C:/Users/gramp/.config/joplin-desktop/resources/1342871b5dde4db7affb81c1f0ef1cf9.png)
-
-![What-Is-a-Cloud-Deployment-Model_-1024x767.webp](file:///C:/Users/gramp/.config/joplin-desktop/resources/8dd466c20154457d8fb341828e77adcc.webp)
+![logo](:/1342871b5dde4db7affb81c1f0ef1cf9)
+![logo](file:///C:/Users/gramp/.config/joplin-desktop/resources/8dd466c20154457d8fb341828e77adcc.webp)
+![logo](:/c3d2e6302f994a5f88c92f8eacd00ecd)
 
 #Types of Cloud Computing
 

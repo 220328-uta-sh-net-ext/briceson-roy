@@ -22,7 +22,55 @@ As of now the top 5 cloud providers:
 3. Microsoft Azure
 4. IBM Cloud
 5. Oracle
+# Cloud deployment models
 
+- There are four cloud deployment models:
+    
+    1.  public
+    2.  private
+    3.  community
+    4.  hybrid
+    5.  multi-cloud
+- with three main cloud service models:
+    
+    1.  Software as a Service (SaaS)
+    2.  Platform as a Service (PaaS)
+    3.  Infrastructure as a Service (IaaS)
+- Main point before making a cloud:
+    
+    1.  environment is based on ownership
+    2.  scale
+    3.  access
+    4.  nature and purpos
+
+1.  Public Cloud
+    
+    - less secure
+    - no setup cost
+    - no Infrastructure Management need
+    - no maintenance
+    - dynamic scalability
+2.  Private Cloud
+    
+    - better control
+    - higher cost
+    - data security and privacy
+    - customization
+3.  Hybrid cloud
+    
+    - flexibility and control
+    - cost
+    - security
+4.  Community cloud
+    
+    - Cost Effective shared
+    - Security
+    - Shared resources
+    - Collaboration and data sharing
+
+![IaaS-PaaS-SaaS-Cloud-Services.png](file:///C:/Users/gramp/.config/joplin-desktop/resources/1342871b5dde4db7affb81c1f0ef1cf9.png)
+
+![What-Is-a-Cloud-Deployment-Model_-1024x767.webp](file:///C:/Users/gramp/.config/joplin-desktop/resources/8dd466c20154457d8fb341828e77adcc.webp)
 
 #Types of Cloud Computing
 

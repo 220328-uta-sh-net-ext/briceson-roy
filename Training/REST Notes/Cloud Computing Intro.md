@@ -67,6 +67,7 @@ Products & Services:
 <br>
 <br>
 <br>
+
 # Cloud Computing 
 the delivery of different services through the internet but are not limited to services. 
 Cloud computing includes tools and applications such as data storage, servers, databases, \
@@ -74,8 +75,58 @@ networking, & software.
 
 Cloud computing is coupled with a cloud based storage, a remote or virtual world(web)
 database(stores data and applicable software to keep it running) 
+# Cloud deployment models
 
-Pros
+- There are four cloud deployment models:
+    
+    1.  public
+    2.  private
+    3.  community
+    4.  hybrid
+    5.  multi-cloud
+- with three main cloud service models:
+    
+    1.  Software as a Service (SaaS)
+    2.  Platform as a Service (PaaS)
+    3.  Infrastructure as a Service (IaaS)
+- Main point before making a cloud:
+    
+    1.  environment is based on ownership
+    2.  scale
+    3.  access
+    4.  nature and purpos
+
+1.  Public Cloud
+    
+    - less secure
+    - no setup cost
+    - no Infrastructure Management need
+    - no maintenance
+    - dynamic scalability
+2.  Private Cloud
+    
+    - better control
+    - higher cost
+    - data security and privacy
+    - customization
+3.  Hybrid cloud
+    
+    - flexibility and control
+    - cost
+    - security
+4.  Community cloud
+    
+    - Cost Effective shared
+    - Security
+    - Shared resources
+    - Collaboration and data sharing
+![logo](https://csharpcorner-mindcrackerinc.netdna-ssl.com/article/what-is-cloud-computing-explore-the-services-and-deployment-models/Images/IaaS-PaaS-SaaS-Cloud-Services.png)
+![logo](https://sam-solutions.us/wp-content/uploads/What-Is-a-Cloud-Deployment-Model_-1024x767.png)
+![logo](file:///C:/Users/gramp/Downloads/multicloud-vs-hybrid-cloud.svg)
+<br>
+<br>
+# Pros and Cons
+## Pros
 ---------- 
 Data control- centralizes data for large projects and branch offices
 Data backup and recovery
@@ -91,7 +142,7 @@ reliable
 Huge cloud storage 
 Automatic software IDs
 
-Con
+## Con
 -----------
 
 ~Good internet connection is required for uploading and downloading

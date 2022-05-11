@@ -29,7 +29,7 @@ As of now the top 5 cloud providers:
 Cloud computing offers different services based on three delivery models.
 Saas (software-as-a-service), Paas (platform-as-a-service), and Iaas (infrastructure-as-a-service).
 
-##What is Saas?
+##W hat is Saas?
 Software-as-a-service is a service that offers on-demand pay per use of application software to users. Unlike licensed bought programs. This service is platform independent, and you don’t need to install the software on your PC. The cloud runs a single instance of the software and makes it available for multiple end-users. This makes could computing cheap. All the computing resources responsible for delivering SaaS are entirely managed by the provider. This service is accessible via a web browser or lightweight client applications. 
 
 Who uses SaaS? End Customers
@@ -130,34 +130,34 @@ database(stores data and applicable software to keep it running)
 <br>
 Pros
 ---------- 
-Data control- centralizes data for large projects and branch offices
-Data backup and recovery
-cost efficient (pay as you go)
-increased productivity, 
-speed and efficient
-performance
-security 
-declutter
-Minimal management 
-Accessibility and pay per use 
-reliable 
-Huge cloud storage 
-Automatic software IDs
+* Data control- centralizes data for large projects and branch offices
+* Data backup and recovery
+* cost efficient (pay as you go)
+* increased productivity, 
+* speed and efficient
+* performance
+* security 
+* declutter
+* Minimal management 
+* Accessibility and pay per use 
+* reliable 
+* Huge cloud storage 
+* Automatic software IDs
 
 Con
 -----------
 
-~Good internet connection is required for uploading and downloading
-~Downtime-possible outages
-~because the user doesnt own the infrastucture limited control 
+* Good internet connection is required for uploading and downloading
+* Downtime-possible outages
+* because the user doesn't own the infrastucture limited control 
 and access to cloud infrastructure 
-~A host of services are provided the consumption comes with restrictions 
+* A host of services are provided the consumption comes with restrictions 
 and limited flexibility for apps and developments. Some of these cloud based data storages may be platform
 dependent or have what is known as a "vendor lock-in" causing complications for migration
-~Although saving and cost efficient the cost can become an (on-going) monthly expense compared 
+* Although saving and cost efficient the cost can become an (on-going) monthly expense compared 
 to traditional methods the initial one time investment.
-~Another drawback is security, and data vulnerability 
-~technical issues could pose a problenm in which the vendor my not have a 24hr support team
-Lastly Vendor lock in 
+* Another drawback is security, and data vulnerability 
+* technical issues could pose a problenm in which the vendor my not have a 24hr support team
+* Lastly Vendor lock in 
   
 

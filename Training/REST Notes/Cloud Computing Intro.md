@@ -39,6 +39,7 @@ Products & Services:
 
 <a href="url"><img src="https://images.idgesg.net/images/article/2017/06/microsoft-office-365-logo-2016-100727915-large.jpg?auto=webp&quality=85,70)" align="left" height="48" width="48" ></a>
 <br>
+<br>
 
 ##What is Paas?
 Platform-as-a-service is mainly a development environment and is made up of a programming language execution environment, an operating systema, a web server, and a database, all of this encapsulate the environment where users can build, compile, and run their programs without worrying at the underlying infrastructure. In this model you manage data and the application resources. All other resources are managed by the provider.
@@ -52,7 +53,7 @@ Products & Services:
 
 <a href="url"><img src="https://images.consultingmag.com/contrib/content/uploads/sites/364/2021/07/Google-cloud-logo.jpg" align="left" height="48" width="48" ></a>
 <br>
-
+<br>
 ##What is Iaas?
 Infrastructure-as-a-service is a service that offers the computing architecture and infrastructure that is it offers all computing resources but in a virtual environment so that multiple users can access them, these resources include data storage, virtualization, servers, and networking. Most providers are responsible for managing the above for resources. If you will use this service, you will be responsible for handling other resources such as applications, data, runtime, and middleware.
 
@@ -63,7 +64,7 @@ Products & Services:
 
 <a href="url"><img src="https://www.dailyhostnews.com/wp-content/uploads/2013/01/gogrid_logo_.png" align="left" height="48" width="48" ></a>
 <br>
-
+<br>
 #Cloud Computing 
 the delivery of different services through the internet but are not limited to services. 
 Cloud computing includes tools and applications such as data storage, servers, databases, \

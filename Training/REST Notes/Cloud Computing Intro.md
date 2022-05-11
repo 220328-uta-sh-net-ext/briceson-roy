@@ -24,7 +24,7 @@ As of now the top 5 cloud providers:
 5. Oracle
 
 
-#Types of Cloud Computing
+# Types of Cloud Computing
 
 Cloud computing offers different services based on three delivery models.
 Saas (software-as-a-service), Paas (platform-as-a-service), and Iaas (infrastructure-as-a-service).

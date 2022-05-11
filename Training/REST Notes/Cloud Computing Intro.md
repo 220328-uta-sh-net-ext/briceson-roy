@@ -122,11 +122,10 @@ database(stores data and applicable software to keep it running)
     - Collaboration and data sharing
 ![logo](https://csharpcorner-mindcrackerinc.netdna-ssl.com/article/what-is-cloud-computing-explore-the-services-and-deployment-models/Images/IaaS-PaaS-SaaS-Cloud-Services.png)
 ![logo](https://sam-solutions.us/wp-content/uploads/What-Is-a-Cloud-Deployment-Model_-1024x767.png)
-![logo](file:///C:/Users/gramp/Downloads/multicloud-vs-hybrid-cloud.svg)
+![logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FUanuH7qCS1oycfYY4IMn/6b790f0e98674ce50c37cf8909d8a4b2/multicloud-vs-hybrid-cloud.svg)
 <br>
 <br>
-# Pros and Cons
-## Pros
+Pros
 ---------- 
 Data control- centralizes data for large projects and branch offices
 Data backup and recovery
@@ -142,7 +141,7 @@ reliable
 Huge cloud storage 
 Automatic software IDs
 
-## Con
+Con
 -----------
 
 ~Good internet connection is required for uploading and downloading

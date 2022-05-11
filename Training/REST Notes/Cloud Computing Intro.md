@@ -29,7 +29,7 @@ As of now the top 5 cloud providers:
 Cloud computing offers different services based on three delivery models.
 Saas (software-as-a-service), Paas (platform-as-a-service), and Iaas (infrastructure-as-a-service).
 
-##W hat is Saas?
+## What is Saas?
 Software-as-a-service is a service that offers on-demand pay per use of application software to users. Unlike licensed bought programs. This service is platform independent, and you don’t need to install the software on your PC. The cloud runs a single instance of the software and makes it available for multiple end-users. This makes could computing cheap. All the computing resources responsible for delivering SaaS are entirely managed by the provider. This service is accessible via a web browser or lightweight client applications. 
 
 Who uses SaaS? End Customers
@@ -128,7 +128,8 @@ database(stores data and applicable software to keep it running)
 ![logo](https://cf-assets.www.cloudflare.com/slt3lc6tev37/2FUanuH7qCS1oycfYY4IMn/6b790f0e98674ce50c37cf8909d8a4b2/multicloud-vs-hybrid-cloud.svg)
 <br>
 <br>
-Pros
+
+# Pros
 ---------- 
 * Data control- centralizes data for large projects and branch offices
 * Data backup and recovery
@@ -144,7 +145,7 @@ Pros
 * Huge cloud storage 
 * Automatic software IDs
 
-Con
+# Con
 -----------
 
 * Good internet connection is required for uploading and downloading

@@ -13,4 +13,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantBL\RestaurantBL.csproj" />
+    <ProjectReference Include="..\RestaurantDL\RestaurantDL.csproj" />
+    <ProjectReference Include="..\RestaurantModel\RestaurantModel.csproj" />
+  </ItemGroup>
+
 </Project>

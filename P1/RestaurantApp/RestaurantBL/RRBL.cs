@@ -33,6 +33,11 @@ public class RRBL : IBL
         IRepository repository = new SqlRepository();
     }
 
+    public void AddUser(User userToAdd)
+    {
+        IRepository repository = new SqlRepository();
+    }
+
 
     /// <summary>
     /// Gets all restaurants

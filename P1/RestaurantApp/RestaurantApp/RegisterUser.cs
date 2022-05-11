@@ -27,25 +27,7 @@ namespace RestaurantUI
             Console.WriteLine("Press <0> to return to the login menu");
         }
 
-        //public bool ValidateUser()
-        //{
-        //    Console.WriteLine("Enter your username: ");
-        //    var Username = Console.ReadLine();
-        //    Console.WriteLine("Enter Password: ");
-        //    var Password = Console.ReadLine();
-        //    if (Username == null || Password == null)
-        //    {
-        //        return false;
-        //    }
-        //    else if (Username != Account.Username || Password != Account.Password)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
+        
 
         public string UserChoice()
         {

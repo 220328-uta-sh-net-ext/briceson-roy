@@ -4,6 +4,7 @@ using Models;
 using RestaurantBL;
 using RestaurantModel;
 using Microsoft.Extensions.Caching.Memory;
+using RestaurantAPI.Repository;
 using System.Data.SqlClient;
 
 
@@ -14,6 +15,7 @@ namespace RestaurantAPI.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
+        private readonly IJWTManagerRepository repository;
         private IBL bL;
         private readonly IMemoryCache _memoryCache;
 
@@ -22,6 +24,7 @@ namespace RestaurantAPI.Controllers
         {
             this.bL = bL;
             this._memoryCache = memoryCache;
+            this.repository = repository;
         }
 
 

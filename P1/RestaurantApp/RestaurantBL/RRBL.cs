@@ -7,9 +7,9 @@ namespace RestaurantBL;
 public class RRBL : IBL
 {
     private readonly IRepository _repo;
-    public RRBL(IRepository repository)
+    public RRBL(IRepository _repo)
     {
-        this._repo = repository;
+        this._repo = _repo;
     }
 
     /// <summary>
@@ -107,6 +107,15 @@ public class RRBL : IBL
         var filteredUsernames = users.Where(user => user.Username.ToLower().Equals(Username)
         && user.Password.ToLower().Equals(Password)).ToList();
         return filteredUsernames;
+    }
+
+    public bool Authenticate(User user)
+    {
+        List<User> users = _repo.GetAllUsers();
+        if(users.Exists(auth => auth.Username == user.Username && auth.Password == user.Password))
+            return true;
+        else
+            return false;
     }
 
     /// <summary>

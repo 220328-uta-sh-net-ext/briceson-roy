@@ -1,5 +1,6 @@
 ﻿using RestaurantModel;
 using RestaurantBL;
+using RestaurantDL;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -10,16 +11,20 @@ namespace RestaurantAPI.Repository
 {
     public class JWTManagerRepository : IJWTManagerRepository
     {
-        private IBL bL = new RRBL();
+        private IRepository _repo = new SqlRepository();
         private IConfiguration configuration;
-        public JWTManagerRepository(IConfiguration configuration)
+        private IBL bL;
+
+        public JWTManagerRepository(IConfiguration configuration, IRepository _repo, IBL bL)
         {
             this.configuration = configuration;
+            this._repo = _repo;
+            this.bL = bL;
         }
 
         public Tokens Authenticate(User user)
         {
-            if(bL.GetUserAccount(user) ==  )
+            if(bL.Authenticate(user) == false)
             {
                 return null;
             }

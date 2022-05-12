@@ -11,14 +11,14 @@ namespace RestaurantAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class AdminController : ControllerBase
     {
         private IBL bL;
         private readonly IMemoryCache memoryCache;
         private IRepository _repository = new SqlRepository();
         
 
-        public UsersController(IBL bL, IMemoryCache memoryCache)
+        public AdminController(IBL bL, IMemoryCache memoryCache)
         {
             this.bL = bL;
             this.memoryCache = memoryCache;

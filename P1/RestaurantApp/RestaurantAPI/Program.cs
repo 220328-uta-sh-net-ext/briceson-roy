@@ -1,6 +1,10 @@
 //using Serilog;
 using RestaurantBL;
 using RestaurantDL;
+using System.Text;
+using RestaurantAPI.Repository;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
 
@@ -13,9 +17,10 @@ var builder = WebApplication.CreateBuilder(args);
 //to access the appSettings.json file JWT token info we will use thi variable
 ConfigurationManager Config = builder.Configuration;
 
+
 // Add services to the container.
 //boiler plate code to configure security with JWT 
-/*builder.Services.AddAuthentication(options => {
+builder.Services.AddAuthentication(options => {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
@@ -32,7 +37,8 @@ ConfigurationManager Config = builder.Configuration;
         ValidateIssuer = false,
         ValidateAudience = false
     };
-});*/
+});
+
 builder.Services.AddMemoryCache();
 builder.Services.AddControllers(options =>
     options.RespectBrowserAcceptHeader = true
@@ -57,7 +63,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthentication();//this needs for authentication using JWT
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

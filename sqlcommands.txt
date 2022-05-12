@@ -1,0 +1,55 @@
+CREATE DATABASE RestaurantDB;
+
+
+DROP Table Reviews;
+
+DROP TABLE Restaurants;
+
+Drop TABLE USERS;
+
+
+CREATE TABLE Restaurants(
+    RestaurantID  INT IDENTITY(1,1 )Primary Key NOT NULL, 
+    Name VARCHAR(50),
+    Rating DECIMAL,        
+    City VARCHAR(50),
+    State VARCHAR(2),
+    ZipCode INT
+);
+
+CREATE TABLE Reviews(
+    RatingID Int IDENTITY(1,1) PRIMARY Key Not Null,
+    RestaurantID int FOREIGN Key REFERENCES Restaurants(RestaurantID),
+    Rating DECIMAL,
+    Details NVARCHAR
+);
+
+CREATE TABLE USERS(
+    UserID INt IDENTITY(1,1) Primary Key Not Null,
+    Username VARCHAR(25) Not Null,
+    Password VARCHAR(25) Not Null,
+    isAdmnin BIT
+);
+
+SELECT * from Restaurants;
+
+Insert Into Restaurants (Name, Rating, City, State, ZipCode)
+VALUES
+('Chef Palinos', 4.6, 'Detroit', 'MI', 48217);
+
+
+-- INSERT into Reviews(
+--     rating, details
+-- )
+-- VALUES(5, 'Good Ambience and tasty food');
+
+
+-- INSERT INTO Restaurants(
+--     Name, rating ,City, State
+-- )
+
+-- VALUES('Bobs Burgers', 'Detroit', 'Michigan');
+
+ALTER TABLE Restaurants
+Add ID int IDENTITY(1,1) PRIMARY KEY not NULL
+

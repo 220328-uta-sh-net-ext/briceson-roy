@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreCSharp", "MoreCSharp\MoreCSharp.csproj", "{36B6F9BE-EDC2-4BC8-980D-6EF808955489}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36B6F9BE-EDC2-4BC8-980D-6EF808955489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B6F9BE-EDC2-4BC8-980D-6EF808955489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B6F9BE-EDC2-4BC8-980D-6EF808955489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B6F9BE-EDC2-4BC8-980D-6EF808955489}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {327FA048-F7EC-45A8-A82C-98BBE3B6B2B3}
+	EndGlobalSection
+EndGlobal

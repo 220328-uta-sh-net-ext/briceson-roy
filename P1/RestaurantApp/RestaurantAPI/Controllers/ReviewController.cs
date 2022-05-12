@@ -18,12 +18,20 @@ namespace RestaurantAPI.Controllers
         private readonly IMemoryCache _memoryCache;
 
 
+        public ReviewController(IBL bL, IMemoryCache memoryCache)
+        {
+            this.bL = bL;
+            this._memoryCache = memoryCache;
+        }
+
+
+
         [HttpGet("All/Reviews")]
         [ProducesResponseType(200, Type = typeof(List<Review>))]
         public ActionResult<List<Review>> GetAllReviews()
         {
-            var restaurntList = new List<Review>();
-            return Ok(restaurntList);
+            var reviewList = bL.GetAllReviews();
+            return Ok(reviewList);
         }
 
 
@@ -49,7 +57,7 @@ namespace RestaurantAPI.Controllers
             if (review.Rating < 0 || review.Rating > 5)
                 BadRequest("Review Rating must be between 0-5");
             bL.AddReview(review);
-            return CreatedAtAction("Get", review);
+            return CreatedAtAction("GetReviewsById", review);
         }
     }
 }

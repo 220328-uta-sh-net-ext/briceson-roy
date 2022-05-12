@@ -26,7 +26,7 @@ namespace RestaurantAPI.Controllers
         [ProducesResponseType(200, Type = typeof(List<Restaurant>))]
         public ActionResult<List<Restaurant>> GetAllRestaurants()
         {
-            var restaurntList = new List<Restaurant>();
+            var restaurntList = bL.GetAllRestaurants();
             return Ok(restaurntList);
         }  
 
@@ -71,15 +71,15 @@ namespace RestaurantAPI.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("Add/Restaurant")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult Post([FromBody] Restaurant restaurant)
         {
             if (restaurant == null)
-                return BadRequest("Invalid pokemon, please try again with valid values");
+                return BadRequest("Bad Restaurant Input. Try Again...");
             bL.AddRestaurant(restaurant);
-            return CreatedAtAction("Get", restaurant);
+            return CreatedAtAction("GetRestaurantByName", restaurant);
         }
     }
 }

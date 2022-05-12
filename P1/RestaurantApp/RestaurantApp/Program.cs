@@ -53,6 +53,3 @@ while (active)
 }
 
 
-//Restaurant name = new Restaurant();
-//name.AvgRating = RatingCalc.AverageRating();
-//Console.WriteLine(name.AvgRating.ToString());

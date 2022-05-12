@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using RestaurantBL;
+using RestaurantDL;
 using RestaurantModel;
 
 
@@ -13,6 +15,8 @@ namespace RestaurantAPI.Controllers
     {
         private IBL bL;
         private readonly IMemoryCache memoryCache;
+        private IRepository _repository = new SqlRepository();
+        
 
         public UsersController(IBL bL, IMemoryCache memoryCache)
         {
@@ -22,9 +26,9 @@ namespace RestaurantAPI.Controllers
 
         [HttpGet("All/Users")]
         [ProducesResponseType(200, Type = typeof(List<User>))]
-        public ActionResult<List<User>> GetAllUser()
+        public ActionResult<List<User>> GetAllUsers()
         {
-            var restaurntList = new List<User>();
+            var restaurntList = _repository.GetAllUsers();
             return Ok(restaurntList);
         }
 
@@ -51,8 +55,8 @@ namespace RestaurantAPI.Controllers
         {
             if (user.Username == null || user.Password == null)
                 return BadRequest("The Username and/or Password cannot be blank please add a valid username and/or password");
-            bL.AddUser(user);
-            return CreatedAtAction("Get", user);
+            _repository.AddUser(user);
+            return CreatedAtAction("GetUserAccount", user);
         }
     }
 }

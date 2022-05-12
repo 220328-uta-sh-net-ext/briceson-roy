@@ -12,7 +12,7 @@ namespace RestaurantDL
 {
     public class SqlRepository : IRepository
     {
-        private string connectionStingPath = "../../../../RestaurantDL/connectionString.txt";
+        private string connectionStingPath = "C:/Users/royzo/Desktop/Projects/Revature/briceson-roy/P1/RestaurantApp/RestaurantDL/connectionString.txt";
         private readonly string connectionString;
 
         public SqlRepository()

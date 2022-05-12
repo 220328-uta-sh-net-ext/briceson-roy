@@ -20,7 +20,8 @@ public class RRBL : IBL
     /// <exception cref="DuplicateRecordException">When there is a restaurant that already exists</exception>
     public void AddRestaurant(Restaurant restaurantToAdd)
     {
-       IRepository repository = new SqlRepository();   
+       IRepository repository = new SqlRepository();
+       repository.AddRestaurant(restaurantToAdd);
     }
 
     /// <summary>
@@ -31,11 +32,13 @@ public class RRBL : IBL
     public void AddReview(Review reviewToAdd)
     {
         IRepository repository = new SqlRepository();
+        repository.AddReview(reviewToAdd);
     }
 
     public void AddUser(User userToAdd)
     {
         IRepository repository = new SqlRepository();
+        repository.AddUser(userToAdd);
     }
 
 
@@ -57,7 +60,7 @@ public class RRBL : IBL
     public List<Restaurant> SearchRestaurants(string searchTerm)
     {
         var restaurants = _repo.GetAllRestaurants();
-        var filteredRestaurants = restaurants.Where(restaurant => restaurant.Name.ToLower().Contains(searchTerm)).ToList();
+        var filteredRestaurants = restaurants.Where(restaurant => restaurant.Name.ToLower().Contains(searchTerm.ToLower())).ToList();
         return filteredRestaurants;
 
     }
@@ -65,7 +68,7 @@ public class RRBL : IBL
     public List<Restaurant> SearchRestaurantsByState(string searchState)
     {
         var restaurants = _repo.GetAllRestaurants();
-        var filteredByState = restaurants.Where(restaurant => restaurant.State.Contains(searchState)).ToList();
+        var filteredByState = restaurants.Where(restaurant => restaurant.State.ToLower().Contains(searchState.ToLower())).ToList();
         return filteredByState;
     }
 

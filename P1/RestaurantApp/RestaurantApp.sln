@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantUI", "RestaurantApp\RestaurantUI.csproj", "{B222E7CF-E551-4DF0-BD8A-53309EA3A2AF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantModel", "RestaurantModel\RestaurantModel.csproj", "{549009AB-5CDF-4F85-95E9-C24B7C29D0E1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantBL", "RestaurantBL\RestaurantBL.csproj", "{92341245-AADD-4BDA-8262-B5D758504568}"
@@ -13,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantDL", "RestaurantD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantTest", "RestaurantTest\RestaurantTest.csproj", "{04F3D2F9-7852-420D-B4D9-D727D638728B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantAPI", "RestaurantAPI\RestaurantAPI.csproj", "{CBBB25E0-EE16-43C2-96E1-6C606D1DD1C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantAPI", "RestaurantAPI\RestaurantAPI.csproj", "{CBBB25E0-EE16-43C2-96E1-6C606D1DD1C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B222E7CF-E551-4DF0-BD8A-53309EA3A2AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B222E7CF-E551-4DF0-BD8A-53309EA3A2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B222E7CF-E551-4DF0-BD8A-53309EA3A2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B222E7CF-E551-4DF0-BD8A-53309EA3A2AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{549009AB-5CDF-4F85-95E9-C24B7C29D0E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{549009AB-5CDF-4F85-95E9-C24B7C29D0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{549009AB-5CDF-4F85-95E9-C24B7C29D0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU

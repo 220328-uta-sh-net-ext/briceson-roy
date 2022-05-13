@@ -26,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RestaurantApp\RestaurantUI.csproj" />
     <ProjectReference Include="..\RestaurantBL\RestaurantBL.csproj" />
     <ProjectReference Include="..\RestaurantDL\RestaurantDL.csproj" />
     <ProjectReference Include="..\RestaurantModel\RestaurantModel.csproj" />

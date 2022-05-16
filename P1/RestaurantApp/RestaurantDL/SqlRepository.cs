@@ -195,29 +195,13 @@ namespace RestaurantDL
             command.ExecuteNonQuery();
         }
 
-        //public void UpdateAvgRating(int restaurantID, decimal rating)
-        //{
-        //    String commandString = "UPDATE Restaurants SET AvgRating=@avg WHERE id=@restaurantID";
-
-        //    using SqlConnection connection = new(connectionString);
-        //    using SqlCommand command = new(commandString, connection);
-
-
-        //    command.Parameters.AddWithValue("@rating", rating);
-        //    connection.Open();
-        //    command.ExecuteNonQuery();
-
-        //}
 
         public List<Restaurant> SearchRestaurants(string searchTerm)
         {
             return GetAllRestaurants();
         }
 
-        public bool IsDuplicate(Restaurant restaurant)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public Restaurant GetRestaurantById(int restaurantId)
         {
@@ -242,11 +226,11 @@ namespace RestaurantDL
             }
             catch (SqlException ex)
             {
-                Console.WriteLine(ex.Message);
+                throw;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw;
             }
             finally
             {
@@ -275,11 +259,11 @@ namespace RestaurantDL
             }
             catch (SqlException ex)
             {
-                Console.WriteLine(ex);
+                throw;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                throw;
             }
             finally
             {
@@ -306,6 +290,74 @@ namespace RestaurantDL
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
+        }
+
+        public bool DeleteRestaurant(Restaurant restaurant)
+        {
+            string commandString = "DELETE From Restaurants where Name = @name";
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new(commandString, connection);
+            try
+            {
+                command.Parameters.AddWithValue("@name", restaurant.Name);
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch(SqlException ex)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+    
+
+        public bool DeleteReview(Review review)
+        {
+            string commandString = "DELETE From Reviews where RestaurantId = @restaurantid";
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new(commandString, connection);
+            try
+            {
+                command.Parameters.AddWithValue("@name", review.RestaurantId);
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public bool BanUser(User user)
+        {
+            string commandString = "DELETE From USERS where UserName = @Username";
+            using SqlConnection connection = new(connectionString);
+            using SqlCommand command = new(commandString, connection);
+            try
+            {
+                command.Parameters.AddWithValue("@Username", user.Username);
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }

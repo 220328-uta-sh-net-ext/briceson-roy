@@ -41,6 +41,7 @@ namespace RestaurantAPI.Controllers
             var filteredRestaurant = bL.SearchRestaurants(name);    
             if (filteredRestaurant.Count <= 0)
             {
+                Log.Error($"Restaurant with the name, {name}, does not exist");
                 return NotFound("The Restaurant in question does not exist");
             }
             return Ok(filteredRestaurant);
@@ -55,6 +56,7 @@ namespace RestaurantAPI.Controllers
             var filteredRestaurant = bL.SearchRestaurantByZipCode(zip);
             if (filteredRestaurant.Count <= 0)
             {
+                Log.Error($"Restaurant with the name, {zip}, does not exist");
                 return NotFound("The Restaurant in question does not exist");
             }
             return Ok(filteredRestaurant);
@@ -68,6 +70,7 @@ namespace RestaurantAPI.Controllers
             var filteredRestaurant = bL.SearchRestaurantsByState(state);
             if (filteredRestaurant.Count <= 0)
             {
+                Log.Error($"Restaurant with the name, {state}, does not exist");
                 return NotFound("The Restaurant in question does not exist");
             }
             return Ok(filteredRestaurant);
@@ -83,6 +86,20 @@ namespace RestaurantAPI.Controllers
                 return BadRequest("Bad Restaurant Input. Try Again...");
             bL.AddRestaurant(restaurant);
             return CreatedAtAction("GetRestaurantByName", restaurant);
+        }
+
+        [HttpDelete("Delete")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult Delete([FromQuery] string name)
+        {
+            if(name == null)
+            {
+                return BadRequest("Delete Cannot happen without a name");
+            }
+            bL.DeleteRestaurant(name);
+            return Ok($"Ok, {name} deleted");
+
         }
     }
 }

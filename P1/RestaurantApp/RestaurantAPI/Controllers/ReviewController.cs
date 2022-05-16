@@ -46,8 +46,10 @@ namespace RestaurantAPI.Controllers
             var filteredReviews = bL.GetReviewsById(id);
             if (filteredReviews.Count <= 0)
             {
+                Log.Error("No Reviews exist for this restaurant currently exist...");
                 return NotFound("No Reviews exist for this restaurant currently exist...");
             }
+            Log.Information("New reviw Successfully added");
             return Ok(filteredReviews);
         }
 
@@ -58,6 +60,7 @@ namespace RestaurantAPI.Controllers
         {
            ;
             if (review.Rating < 0 || review.Rating > 5)
+                Log.Error("Bad Rating Request Made");
                 BadRequest("Review Rating must be between 0-5");
             bL.AddReview(review);
             return CreatedAtAction("GetReviewsById", review);

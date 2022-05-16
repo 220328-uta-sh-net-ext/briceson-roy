@@ -1,4 +1,4 @@
-//using Serilog;
+global using Serilog;
 using RestaurantBL;
 using RestaurantDL;
 using System.Text;
@@ -7,6 +7,10 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("C:/Users/royzo/Desktop/Projects/Revature/briceson-roy/P1/RestaurantApp/RestaurantDL/logs.txt").MinimumLevel.Information()
+    .CreateLogger();
 
 
 string connectionStringFilePath = "C:/Users/royzo/Desktop/Projects/Revature/briceson-roy/P1/RestaurantApp/RestaurantDL/connectionString.txt"; ;

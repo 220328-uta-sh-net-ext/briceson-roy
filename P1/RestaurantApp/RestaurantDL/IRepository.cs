@@ -23,7 +23,11 @@ namespace RestaurantDL
 
         Restaurant GetRestaurantById(int restaurantId);
 
-        bool IsDuplicate(Restaurant restaurant);
         void AddReview(Review newReview);
+
+        bool DeleteRestaurant(Restaurant restaurant);
+        bool DeleteReview(Review review);
+
+        bool BanUser(User user);
     }
 }

@@ -27,11 +27,20 @@ namespace RestaurantBL
 
         void AddReview(Review newReview);
 
+        bool DeleteRestaurant(string name);
+        bool DeleteReview(int restaurant);
+
+        bool BanUser(string username);
+
+
+
         bool Authenticate(User user);
 
         List<User> GetUserAccount(string Username, string Password);
 
         List<User> GetUserName(string Username);
+
+
 
      
 

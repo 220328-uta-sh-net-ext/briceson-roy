@@ -42,6 +42,42 @@ public class RRBL : IBL
     }
 
 
+    public bool DeleteRestaurant(string name)
+    {
+        var restaurants = _repo.GetAllRestaurants();
+        foreach (var restaur in restaurants)
+        {
+            if (restaur.Name.Equals(name))
+                if (_repo.DeleteRestaurant(restaur) == true)
+                    return true;
+        }
+        return false;
+    }
+    public bool DeleteReview(int restaurantId)
+    {
+        var reviews = _repo.GetAllReviews();
+        foreach (var rev in reviews)
+        {
+            if (rev.RestaurantId.Equals(restaurantId))
+                if (_repo.DeleteReview(rev) == true)
+                    return true;
+        }
+        return false;
+    }
+
+    public bool BanUser(string username)
+    {
+        var users = _repo.GetAllUsers();
+        foreach (var u in users)
+        {
+            if (u.Username.Equals(username))
+                if (_repo.BanUser(u) == true)
+                    return true;
+        }
+        return false;
+    }
+
+
     /// <summary>
     /// Gets all restaurants
     /// </summary>

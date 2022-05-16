@@ -23,7 +23,8 @@ namespace RestaurantAPI.Controllers
             this.bL = bL;
             this.memoryCache = memoryCache;
         }
-
+        
+ 
         [HttpGet("All/Users")]
         [ProducesResponseType(200, Type = typeof(List<User>))]
         public ActionResult<List<User>> GetAllUsers()
@@ -57,6 +58,21 @@ namespace RestaurantAPI.Controllers
                 return BadRequest("The Username and/or Password cannot be blank please add a valid username and/or password");
             _repository.AddUser(user);
             return CreatedAtAction("GetUserAccount", user);
+        }
+
+
+        [HttpDelete("Delete")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult Delete([FromQuery] string username)
+        {
+            if (username == null)
+            {
+                return BadRequest("Delete Cannot happen without a name");
+            }
+            bL.BanUser(username);
+            return Ok($"Ok, {username} deleted");
+
         }
     }
 }

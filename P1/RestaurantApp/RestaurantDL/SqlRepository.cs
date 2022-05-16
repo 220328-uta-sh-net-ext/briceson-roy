@@ -144,7 +144,7 @@ namespace RestaurantDL
 
         public User AddUser(User userToAdd)
         {
-            string commandString = "INSERT INTO USERS (UserName, Password, isAdmin) VALUES (@Username, @Password, @accountType)";
+            string commandString = "INSERT INTO USERS (UserName, Password, AccountType) VALUES (@Username, @Password, @accountType)";
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 

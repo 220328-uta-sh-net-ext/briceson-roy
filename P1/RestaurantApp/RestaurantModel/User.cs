@@ -16,14 +16,17 @@ namespace RestaurantModel
 
         public string Password { get ; set;}   
 
-        public string AccountType { get; set; }
+        public string AccountType { get; set
+              
+                
+                ; }
 
-        /*public User()
+        public User()
         {
             Username = "LoremIpsum";
             Password = "Password";
-            isAdmin = false;
-        }*/
+            AccountType = "basic";
+        }
 
         public override string ToString()
         {

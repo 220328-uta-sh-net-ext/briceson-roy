@@ -17,7 +17,7 @@ namespace RestaurantAPI.Controllers
         private IRepository _repository = new SqlRepository();
         private readonly IJWTManagerRepository repository;
 
-        public UsersController(IJWTManagerRepository repository)
+        public UsersController(IJWTManagerRepository repository, IBL bL)
         {
             this.repository = repository;
             this.bL = bL;
@@ -28,25 +28,42 @@ namespace RestaurantAPI.Controllers
         [Route("register")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult Post([FromBody] User user)
+        public ActionResult Post([FromQuery] string userName, string password)
         {
+            User user = new()
+            {
+                Username = userName,
+                Password = password
+            };
             if (user.Username == null || user.Password == null)
+            {
                 Log.Error("Failed to create user due to bad input");
                 return BadRequest("The Username and/or Password cannot be blank please add a valid username and/or password");
+            }
+                
             _repository.AddUser(user);
-            return CreatedAtAction("GetUserAccount", user);
+            Log.Information("New user successfully created.");
+            return Ok("User Account successfully created.");
         }
 
 
         [AllowAnonymous]
         [HttpPost]
         [Route("authenticate")]
-        public IActionResult Authenticate(User user)
+        public IActionResult Authenticate([FromQuery] string userName, string password)
         {
+            User user = new()
+            {
+                Username = userName,
+                Password = password
+            };
             var token = bL.Authenticate(user);
-
             if (token == null)
+            {
+                Log.Error("Unauthorized activity detected");
                 return Unauthorized();
+            }
+            Log.Information("Token successfully issued");
             return Ok(token);
         }
     }

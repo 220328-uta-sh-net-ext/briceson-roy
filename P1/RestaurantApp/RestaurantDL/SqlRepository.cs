@@ -133,7 +133,7 @@ namespace RestaurantDL
                 {
                     Username = (string)row[1],
                     Password = (string)row[2],
-                    isAdmin = (bool)row[3]
+                    AccountType = (string)row[3]
                 });
             }
 
@@ -144,7 +144,7 @@ namespace RestaurantDL
 
         public User AddUser(User userToAdd)
         {
-            string commandString = "INSERT INTO USERS (UserName, Password, isAdmin) VALUES (@Username, @Password, @isAdmin)";
+            string commandString = "INSERT INTO USERS (UserName, Password, isAdmin) VALUES (@Username, @Password, @accountType)";
             using SqlConnection connection = new(connectionString);
             using SqlCommand command = new(commandString, connection);
 
@@ -152,7 +152,7 @@ namespace RestaurantDL
 
             command.Parameters.AddWithValue("@Username", userToAdd.Username);
             command.Parameters.AddWithValue("@Password", userToAdd.Password);
-            command.Parameters.AddWithValue("@isAdmin", userToAdd.isAdmin);
+            command.Parameters.AddWithValue("@accountType", userToAdd.AccountType);
 
             connection.Open();
             command.ExecuteNonQuery();

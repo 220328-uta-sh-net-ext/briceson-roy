@@ -17,11 +17,11 @@ namespace RestaurantTest
 
             newUser.Username = "user123";
             newUser.Password = "password456";
-            newUser.isAdmin = false;
+            newUser.AccountType = "basic";
 
             Assert.Equal("user123", newUser.Username);
             Assert.Equal("password456", newUser.Password);
-            Assert.Equal(false, newUser.isAdmin);
+            Assert.Equal("basic", newUser.AccountType);
         }
 
         public void RegisterAdminUserTest()
@@ -30,11 +30,11 @@ namespace RestaurantTest
 
             newUser.Username = "admin123";
             newUser.Password = "password456";
-            newUser.isAdmin = true;
+            newUser.AccountType = "admin";
 
             Assert.Equal("admin123", newUser.Username);
             Assert.Equal("password456", newUser.Password);
-            Assert.Equal(true, newUser.isAdmin);
+            Assert.Equal("admin", newUser.AccountType);
         }
 
 

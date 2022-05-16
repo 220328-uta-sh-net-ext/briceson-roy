@@ -54,7 +54,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IRepository>(repo => new SqlRepository());
 builder.Services.AddScoped<IBL, RRBL>();
-//builder.Services.AddSingleton<IJWTManagerRepository, JWTManagerRepository>();
+builder.Services.AddScoped<IJWTManagerRepository, JWTManagerRepository>();
 
 //app here refers to the pipeline middleware
 var app = builder.Build();

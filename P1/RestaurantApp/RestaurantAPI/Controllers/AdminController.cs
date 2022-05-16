@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using RestaurantAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using RestaurantBL;
@@ -14,17 +15,16 @@ namespace RestaurantAPI.Controllers
     public class AdminController : ControllerBase
     {
         private IBL bL;
-        private readonly IMemoryCache memoryCache;
         private IRepository _repository = new SqlRepository();
-        
+        private readonly IJWTManagerRepository repository;
 
-        public AdminController(IBL bL, IMemoryCache memoryCache)
+        public AdminController(IBL bL, IJWTManagerRepository repository)
         {
             this.bL = bL;
-            this.memoryCache = memoryCache;
+            this.repository = repository;
         }
         
- 
+        [Authorize(Roles = "admin")]
         [HttpGet("All/Users")]
         [ProducesResponseType(200, Type = typeof(List<User>))]
         public ActionResult<List<User>> GetAllUsers()
@@ -33,7 +33,7 @@ namespace RestaurantAPI.Controllers
             return Ok(restaurntList);
         }
 
-
+        [Authorize(Roles = "admin")]
         [HttpGet("Username")]
         [ProducesResponseType(200, Type = typeof(User))]
         [ProducesResponseType(404)]
@@ -47,20 +47,7 @@ namespace RestaurantAPI.Controllers
             return Ok(filteredUsers);
         }
 
-
-
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult Post([FromBody] User user)
-        {
-            if (user.Username == null || user.Password == null)
-                return BadRequest("The Username and/or Password cannot be blank please add a valid username and/or password");
-            _repository.AddUser(user);
-            return CreatedAtAction("GetUserAccount", user);
-        }
-
-
+        [Authorize(Roles = "admin")]
         [HttpDelete("Delete")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

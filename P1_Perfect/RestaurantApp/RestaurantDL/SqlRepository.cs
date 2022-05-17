@@ -76,19 +76,28 @@ namespace RestaurantDL
             string commandString = "SELECT * FROM Restaurants";
 
             using SqlConnection connection = new(connectionString);
-            using IDbCommand command = new SqlCommand(commandString, connection);
+            using SqlCommand command = new SqlCommand(commandString, connection);
             connection.Open();
-            using IDataReader reader = command.ExecuteReader();
+
+            IDataAdapter adapter = new SqlDataAdapter(command);
+
+
+            DataSet dataSet = new();
+            adapter.Fill(dataSet);
+            connection.Close();
+
             
 
             var restaurants = new List<Restaurant>();
-            int idCount = 1;
+            DataColumn levelColumn = dataSet.Tables[0].Columns[2];
 
-            while (reader.Read())
+            int idCount = 1;
+            foreach (DataRow row in dataSet.Tables[0].Rows)
             {
                 decimal rating = 0.0M;
                 int counter = 0;
-                foreach(Review review in getReviews)
+                idCount = (int)row[0];
+                foreach (Review review in getReviews)
                 {
                     if (idCount == review.RestaurantId)
                     {
@@ -96,22 +105,22 @@ namespace RestaurantDL
                         rating += review.Rating;
                     }
                 } 
-                idCount++;
                 if (counter != 0)
                       rating /= counter; 
                 
 
                 restaurants.Add(new Restaurant
                 {
-                    Id = reader.GetInt32(0),
-                    Name = reader.GetString(1),
-                    City = reader.GetString(2),
-                    State = reader.GetString(3),
-                    ZipCode = (int)reader.GetInt32(4),
+                    Id = (int)row[0],
+                    Name = (string)row[1],
+                    City = (string)row[2],
+                    State = (string)row[3],
+                    ZipCode = (int)row[4],
                     Rating = rating,
                 });
             }
             return restaurants;
+
         }
 
         public List<User> GetAllUsers()

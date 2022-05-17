@@ -58,7 +58,7 @@ builder.Services.AddScoped<IJWTManagerRepository, JWTManagerRepository>();
 var app = builder.Build();
 app.Logger.LogInformation("App Started");
 // Configure the HTTP request pipeline.
-if (app.Environment.IsProduction())
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
